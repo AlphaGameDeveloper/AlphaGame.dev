@@ -14,7 +14,7 @@ body {
     font-family: "Inconsolata";
     height: 100%;
 }
-a {
+a,a:visited {
     text-decoration: none;
     color: $accent;
 }
@@ -129,3 +129,11 @@ hr {
 
 @import "typography";
 @import "tables";
+
+/* custom here */
+
+li.excerpt {
+    list-style-image: none;
+}
+
+.blk {color: black;}

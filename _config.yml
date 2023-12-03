@@ -1,7 +1,9 @@
 title: AlphaGameDeveloper
 url: ""
-baseurl: "/"
+baseurl: ""
 
+permalink: /blog/:year/:month/:title
+excerpt_separator: <!--more-->
 markdown: kramdown
 #ins_logo: "./bits-logo.png"
 
@@ -20,3 +22,7 @@ nav:
    link: "/"
  - name: "About"
    link: "/about"
+ - name: "Blog"
+   link: /blog
+ - name: GitHub
+   link: https://github.com/AlphaGameDeveloper
