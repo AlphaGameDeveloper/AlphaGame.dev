@@ -5,9 +5,11 @@ baseurl: ""
 permalink: /blog/:year/:month/:title
 excerpt_separator: <!--more-->
 markdown: kramdown
+highlighter: rouge
+
 #ins_logo: "./bits-logo.png"
 
-tracking_id: #
+tracking_id: "G-Y1CR4RKJQZ"
 
 footer: yes
 footer_url: "https://alphagame.dev/"

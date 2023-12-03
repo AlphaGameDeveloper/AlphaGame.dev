@@ -1,0 +1,13 @@
+{% if site.data.message.enabled %}
+<div id="site-message">
+    {% if site.data.message.type == "info" %}
+    <p class="message-info">
+    {% elsif site.data.message.type == "warn" %}
+    <p class="message-warn">
+    {% else %}
+    <p class="message-generic">
+    {% endif %}
+        {{ site.data.message.message }}
+    </p>
+</div>
+{% endif %}

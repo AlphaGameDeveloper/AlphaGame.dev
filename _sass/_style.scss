@@ -129,6 +129,9 @@ hr {
 
 @import "typography";
 @import "tables";
+/* CUSTOM */
+@import "rouge";
+/**********/
 
 /* custom here */
 
@@ -137,3 +140,22 @@ li.excerpt {
 }
 
 .blk {color: black;}
+
+@mixin message() {
+    border: 1px dashed #000000;
+    margin-top: 5%;
+    text-align: center;
+}
+
+.message-info {
+    @include message();
+    background-color: #D1ECF1;
+}
+.message-warn {
+    @include message();
+    background-color: #FFF3CD;
+}
+.message-generic {
+    @include message();
+    background-color: #FEFEFE;
+}
