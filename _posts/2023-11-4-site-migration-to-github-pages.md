@@ -2,7 +2,6 @@
 layout: post
 title: Site Migration to GitHub Pages
 ---
-# Site Migration to GitHub Pages
 Hey all-
 
 I have been working on moving this site from my server to GitHub pages.  You may wonder, *"Why would you move your site to GitHub pages when you already have a server at home that you already used WordPress on?"*.
