@@ -1,0 +1,287 @@
+<p>Language: Arduino C++; Arduino Uno</p>
+<p><b>This code is licensed under MIT--Some rights reserved.</b><br />
+	<i>&copy; Damien Boisvert (AlphaGameDeveloper) 2023</i></p>
+<style>
+	.ide {
+    color: #000000;
+}
+
+pre.ide {
+    background: #e7f3f9;
+}
+
+.ide-keyword {
+    color: rgb(0, 150, 189);
+}
+
+.ide-system-keyword {
+    color: rgb(94, 109, 3);
+}
+
+.ide-platform-function {
+    color: rgb(211, 84, 0);
+}
+
+.ide-platform-class {
+    color: rgb(211, 84, 0);
+    font-weight: bold;
+}
+
+.ide-string {
+    color: rgb(0, 92, 95);
+}
+
+.ide-line-comment {
+    color: rgb(102, 78, 83);
+}
+
+.ide-block-comment {
+    color: rgb(145, 165, 166);
+}
+</style>
+<pre class="ide"><code><span class="ide-block-comment">/*
+  Low power car.  Code by Damien Boisvert.
+  
+  This program is licensed under MIT.
+
+Copyright (c) 2023 Damien Boisvert (AlphaGameDeveloper)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the &quot;Software&quot;), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+*/</span>
+
+<span class="ide-line-comment">// settings</span>
+<span class="ide-keyword">const</span> <span class="ide-keyword">int</span> meters = 1;
+<span class="ide-keyword">const</span> <span class="ide-keyword">int</span> metertime = 12000;
+<span class="ide-line-comment">// --------</span>
+<span class="ide-keyword">const</span> <span class="ide-keyword">int</span> trigbtn = 5;
+<span class="ide-keyword">const</span> <span class="ide-keyword">int</span> buzzer = 6;
+<span class="ide-keyword">const</span> <span class="ide-keyword">int</span> motor = 8;
+<span class="ide-keyword">const</span> <span class="ide-keyword">int</span> startDelayTime = 5;
+<span class="ide-keyword">bool</span> icanhasstarted = <span class="ide-keyword">false</span>;
+
+
+<span class="ide-keyword">void</span> buzz() {
+  <span class="ide-platform-function">digitalWrite</span>(buzzer, <span class="ide-keyword">HIGH</span>);
+  <span class="ide-platform-function">delay</span>(200);
+  <span class="ide-platform-function">digitalWrite</span>(buzzer, <span class="ide-keyword">LOW</span>);
+}
+<span class="ide-line-comment">// setup() is called once: when the board powers on.</span>
+<span class="ide-line-comment">// This function contains code that initalizes the</span>
+<span class="ide-line-comment">// board and sets pins via &#039;pinMode&#039; to be an INPUT</span>
+<span class="ide-line-comment">// or an output.  It also sets up a serial connection to </span>
+<span class="ide-line-comment">// the computer so that I can send the &#039;go&#039; signal to the</span>
+<span class="ide-line-comment">// board.</span>
+<span class="ide-keyword">void</span> <span class="ide-system-keyword">setup</span>() {
+  <span class="ide-platform-class">Serial</span>.<span class="ide-platform-function">begin</span>(9600); <span class="ide-line-comment">// Connect to the computer via 9600 baud Serial</span>
+  <span class="ide-platform-function">pinMode</span>(trigbtn, <span class="ide-keyword">INPUT</span>);
+  <span class="ide-platform-function">pinMode</span>(motor, <span class="ide-keyword">OUTPUT</span>);
+  <span class="ide-platform-function">pinMode</span>(buzzer, <span class="ide-keyword">OUTPUT</span>);
+  <span class="ide-line-comment">// Serial.println send a short message to the connected</span>
+  <span class="ide-line-comment">// computer.  This is used for debugging and lets me know</span>
+  <span class="ide-line-comment">// what the board is thinking.</span>
+  <span class="ide-platform-class">Serial</span>.<span class="ide-platform-function">println</span>(<span class="ide-string">&quot;Board has been initalized!&quot;</span>);
+  <span class="ide-line-comment">// Display what pin the motor is listening on</span>
+  <span class="ide-platform-class">Serial</span>.<span class="ide-platform-function">print</span>(<span class="ide-string">&quot;Motor pin is set to : &quot;</span>);
+  <span class="ide-platform-class">Serial</span>.<span class="ide-platform-function">println</span>(motor);
+  <span class="ide-platform-class">Serial</span>.<span class="ide-platform-function">print</span>(<span class="ide-string">&quot;Current time is set to: &quot;</span>);
+  <span class="ide-platform-class">Serial</span>.<span class="ide-platform-function">println</span>(metertime);
+  <span class="ide-line-comment">// Inform the user that the board is waiting for a Serial signal.</span>
+  <span class="ide-platform-class">Serial</span>.<span class="ide-platform-function">println</span>(<span class="ide-string">&quot;Currently waiting for Serial IO signal!&quot;</span>);
+  
+}
+
+<span class="ide-line-comment">// This function is depricated.  It serves no real</span>
+<span class="ide-line-comment">// use, but it is still in the code to preserve data</span>
+<span class="ide-line-comment">// integrity.  No need to mention it, as it is for testing</span>
+<span class="ide-line-comment">// only. (debug)</span>
+<span class="ide-keyword">void</span> debug(<span class="ide-keyword">String</span> message) {
+  <span class="ide-platform-class">Serial</span>.<span class="ide-platform-function">print</span>(<span class="ide-string">&quot;debug: &quot;</span>);
+  <span class="ide-platform-class">Serial</span>.<span class="ide-platform-function">println</span>(message);
+}
+
+<span class="ide-line-comment">// This function waits for the message to start from the</span>
+<span class="ide-line-comment">// computer.  This proves to be more reliable than a blind</span>
+<span class="ide-line-comment">// delay, but it does require a serial connection to the computer</span>
+<span class="ide-line-comment">// (at least when it starts).  A button based system would be better,</span>
+<span class="ide-line-comment">// and is in another (unused) version of the software.  This may be</span>
+<span class="ide-line-comment">// merged later.</span>
+<span class="ide-keyword">void</span> serialHang() {
+  <span class="ide-line-comment">// set a variable &#039;hanging&#039;, to hold the holding status</span>
+  <span class="ide-keyword">bool</span> hanging = <span class="ide-keyword">true</span>;
+  <span class="ide-line-comment">// This is a loop that runs while code is hanging</span>
+  <span class="ide-system-keyword">while</span> (hanging == <span class="ide-keyword">true</span>) {
+    <span class="ide-system-keyword">if</span> (<span class="ide-platform-class">Serial</span>.available() &gt; 0) {
+    <span class="ide-line-comment">// If there is incoming serial data</span>
+    <span class="ide-keyword">String</span> receivedMessage = <span class="ide-string">&quot;&quot;</span>; <span class="ide-line-comment">// Initialize an empty string to store the received message</span>
+
+    <span class="ide-line-comment">// Read the incoming characters one by one until a newline character is received</span>
+    <span class="ide-system-keyword">while</span> (<span class="ide-platform-class">Serial</span>.available() &gt; 0) {
+      <span class="ide-line-comment">// Serial.read() is to actually wait for the prompt to be completed.</span>
+      <span class="ide-line-comment">// This is basic Serial/IoT/HTTP standard, and otherwise you would get</span>
+      <span class="ide-line-comment">// something like: User enters &#039;help&#039;; Arduino gets &#039;he&#039;, &#039;l&#039;, &#039;p&#039;. Serial</span>
+      <span class="ide-line-comment">// is complex, because it is not a easy binary 1 or 0; it is analog.</span>
+      <span class="ide-keyword">char</span> incomingChar = <span class="ide-platform-class">Serial</span>.<span class="ide-platform-function">read</span>();
+      <span class="ide-system-keyword">if</span> (incomingChar == &#039;\n&#039;) {
+        <span class="ide-line-comment">// Exit the loop when a newline character is received,</span>
+        <span class="ide-line-comment">// as it is the end of the message.</span>
+        break; 
+      }
+      <span class="ide-line-comment">// Append the character to the received message</span>
+      receivedMessage += incomingChar; 
+    }
+    
+    <span class="ide-line-comment">// This code will run AFTER the serial signal is recieved, so</span>
+    <span class="ide-line-comment">// all code after this (or this function), is only called if</span>
+    <span class="ide-line-comment">// the user wants the machine to start.  The below line tells</span>
+    <span class="ide-line-comment">// the user what the board recieved via Serial IO, but sending</span>
+    <span class="ide-line-comment">// a blank message containing nothing (an empty string &#039;\n&#039;) would</span>
+    <span class="ide-line-comment">// work, too.</span>
+    <span class="ide-platform-class">Serial</span>.<span class="ide-platform-function">print</span>(<span class="ide-string">&quot;Recieved data: &quot;</span>);
+    <span class="ide-platform-class">Serial</span>.<span class="ide-platform-function">println</span>(receivedMessage);
+    <span class="ide-line-comment">// Tells the user that the machine will start, and to &#039;hold on to your butts&#039;,</span>
+    <span class="ide-line-comment">// because AMAZING STUFF will happen!!!!!</span>
+    <span class="ide-platform-class">Serial</span>.<span class="ide-platform-function">println</span>(<span class="ide-string">&quot;Hold on to your butt, boss!&quot;</span>);
+
+    <span class="ide-platform-class">Serial</span>.<span class="ide-platform-function">println</span>(<span class="ide-string">&quot;Holding for 10 seconds... Cut to stop it!&quot;</span>);
+    <span class="ide-platform-class">Serial</span>.<span class="ide-platform-function">println</span>(<span class="ide-string">&quot;Be sure to disconnect Serial IO!&quot;</span>);
+    <span class="ide-platform-class">Serial</span>.<span class="ide-platform-function">print</span>(<span class="ide-string">&quot;Waiting...&quot;</span>);
+    <span class="ide-line-comment">// Wait the 10 second delay, and display the time remaining via Serial IO.</span>
+    <span class="ide-line-comment">// Example: Waiting... 1... 2... 3... 4..., etc.</span>
+    <span class="ide-system-keyword">for</span> (<span class="ide-keyword">int</span> i = 1; i &lt; 11; i++) {
+      <span class="ide-platform-class">Serial</span>.<span class="ide-platform-function">print</span>(i);
+      <span class="ide-platform-class">Serial</span>.<span class="ide-platform-function">print</span>(<span class="ide-string">&quot;... &quot;</span>);
+      <span class="ide-platform-function">delay</span>(1000); <span class="ide-line-comment">// &lt;-- Wait one second between numbers, otherwise it would all go at once!</span>
+    }
+    <span class="ide-platform-class">Serial</span>.<span class="ide-platform-function">println</span>(<span class="ide-string">&quot;\nSTARTING!&quot;</span>);
+    <span class="ide-line-comment">// &#039;return&#039; stops the function.  It is used to stop the hanging loop, and let</span>
+    <span class="ide-line-comment">// setup() or loop() (The Arduino standardized main entrypoint functions) take</span>
+    <span class="ide-line-comment">// back control of the board.  However, it does not return data, as it is a void</span>
+    <span class="ide-line-comment">// function that does not return anything.  It returns &#039;undefined&#039;.  (End of function.)</span>
+    <span class="ide-system-keyword">return</span>;
+    }
+  }
+}
+
+<span class="ide-line-comment">// Button hang, which, like serialHang, will stop the code</span>
+<span class="ide-line-comment">// until the button is pressed.  This is much better than</span>
+<span class="ide-line-comment">// using Serial.INPUT because it makes me not have to use the</span>
+<span class="ide-line-comment">// computer, instead.  (TL;DR: No blue wire unless programming)</span>
+<span class="ide-keyword">void</span> buttonHang() {
+  <span class="ide-line-comment">// set a boolean variable (bool=true/false) variable that tracks</span>
+  <span class="ide-line-comment">// if the button is pressed.  The code will hang until the &#039;triggered&#039;</span>
+  <span class="ide-line-comment">// variable is set to true, at which point the hang will stop when the</span>
+  <span class="ide-line-comment">// button is pressed. :)</span>
+  <span class="ide-keyword">bool</span> triggered = <span class="ide-keyword">false</span>;
+  <span class="ide-keyword">int</span> waitTimeOverride = 60000;
+  <span class="ide-keyword">int</span> millisWaited = 0;
+  <span class="ide-keyword">int</span> checkDelay = 50;
+  <span class="ide-keyword">int</span> overrideWarningTime = 5;
+  <span class="ide-system-keyword">while</span> (!triggered) { <span class="ide-line-comment">//repeat while triggered ^^ is false</span>
+    <span class="ide-system-keyword">if</span> (<span class="ide-platform-function">digitalRead</span>(trigbtn) == <span class="ide-keyword">HIGH</span>) { <span class="ide-line-comment">// check if the button was pressed</span>
+      <span class="ide-platform-class">Serial</span>.<span class="ide-platform-function">println</span>(<span class="ide-string">&quot;Button recieved: OK!&quot;</span>)
+      triggered = <span class="ide-keyword">true</span>;
+      <span class="ide-line-comment">// breaks the loop, as loop only continues whilst</span>
+      <span class="ide-line-comment">// the variable &#039;triggered&#039; is set to false, but</span>
+      <span class="ide-line-comment">// the above code sets it to true.  The loop will</span>
+      <span class="ide-line-comment">// not repeat at the next interval, causing code</span>
+      <span class="ide-line-comment">// execution to continue.</span>
+    }
+    <span class="ide-system-keyword">else</span> {
+      <span class="ide-platform-function">delay</span>(checkDelay);
+      millisWaited += checkDelay;
+      <span class="ide-system-keyword">if</span> (millisWaited &gt;= waitTimeOverride) {
+        <span class="ide-platform-class">Serial</span>.<span class="ide-platform-function">println</span>(<span class="ide-string">&quot;OK you lazy bozos ima start now.&quot;</span>)
+        <span class="ide-line-comment">// 5(overridewarning) second warning</span>
+        <span class="ide-system-keyword">for</span> (<span class="ide-keyword">int</span> i = 0; i &lt; overrideWarningTime; i++) {
+          <span class="ide-line-comment">// give a warning before i start.  set with:</span>
+          <span class="ide-line-comment">// int overrideWarningTime = ____.</span>
+          buzz();
+          <span class="ide-platform-function">delay</span>(800);
+          <span class="ide-platform-class">Serial</span>.<span class="ide-platform-function">print</span>(<span class="ide-string">&quot;GOING TO EXPLODE IN &quot;</span>)
+          <span class="ide-platform-class">Serial</span>.<span class="ide-platform-function">println</span>(i+1);
+        }
+        break;
+      }
+    }
+  }
+  <span class="ide-line-comment">// This code is executed when the button is pressed, only.</span>
+  <span class="ide-platform-class">Serial</span>.<span class="ide-platform-function">println</span>(<span class="ide-string">&quot;Hold on to your butts!&quot;</span>);
+  <span class="ide-platform-class">Serial</span>.<span class="ide-platform-function">println</span>(<span class="ide-string">&quot;PinMode LAYOUT:&quot;</span>);
+  <span class="ide-platform-class">Serial</span>.<span class="ide-platform-function">println</span>(<span class="ide-string">&quot;PIN...DEVICE&quot;</span>);
+  <span class="ide-platform-class">Serial</span>.<span class="ide-platform-function">print</span>(motor);
+  <span class="ide-platform-class">Serial</span>.<span class="ide-platform-function">println</span>(<span class="ide-string">&quot;, MOTOR&quot;</span>);
+  <span class="ide-platform-class">Serial</span>.<span class="ide-platform-function">print</span>(trigbtn);
+  <span class="ide-platform-class">Serial</span>.<span class="ide-platform-function">println</span>(<span class="ide-string">&quot;, TRIGGER BUTTON&quot;</span>);
+  <span class="ide-platform-class">Serial</span>.<span class="ide-platform-function">print</span>(buzzer);
+  <span class="ide-platform-class">Serial</span>.<span class="ide-platform-function">println</span>(<span class="ide-string">&quot;, BUZZER&quot;</span>);
+  <span class="ide-platform-class">Serial</span>.<span class="ide-platform-function">print</span>(<span class="ide-string">&quot;\n\nWaiting &quot;</span>);
+  <span class="ide-platform-class">Serial</span>.<span class="ide-platform-function">print</span>(startDelayTime);
+  <span class="ide-platform-class">Serial</span>.<span class="ide-platform-function">println</span>(<span class="ide-string">&quot;seconds to start!&quot;</span>);
+  <span class="ide-system-keyword">for</span> (<span class="ide-keyword">int</span> i = 0; i &lt; startDelayTime; i++) {
+    <span class="ide-keyword">int</span> a = i+1; <span class="ide-line-comment">// get human-readable time, as it starts at zero.</span>
+    <span class="ide-platform-class">Serial</span>.<span class="ide-platform-function">print</span>(a);
+    <span class="ide-platform-class">Serial</span>.<span class="ide-platform-function">print</span>(<span class="ide-string">&quot;... &quot;</span>)
+    <span class="ide-system-keyword">if</span> (a &lt; 4) { <span class="ide-line-comment">// 3 or less, buzz!</span>
+      buzz();
+      <span class="ide-platform-function">delay</span>(800);
+    }
+    <span class="ide-system-keyword">else</span> {
+      <span class="ide-platform-function">delay</span>(1000);
+    }
+  }
+  <span class="ide-platform-class">Serial</span>.<span class="ide-platform-function">println</span>(<span class="ide-string">&quot;\nTimer OK, starting car!&quot;</span>)
+  
+
+  
+}
+
+<span class="ide-line-comment">// Loop() contains all main program code... It runs on repeat forever, which is great in</span>
+<span class="ide-line-comment">// almost every situation aside from this implementation... We want loop() to run once,</span>
+<span class="ide-line-comment">// like setup() but not repeat.  What I do to stop the repeating, is that if you look near</span>
+<span class="ide-line-comment">// the start of this file, you will find a boolean (true/false) named &#039;icanhasstarted&#039;.  btw, </span>
+<span class="ide-line-comment">// grammar should not matter in code. :)  Anyway, it is set to false by default, but when loop()</span>
+<span class="ide-line-comment">// finishes, it is set to true, as we don&#039;t want loop() to run again.  When loop() starts, it</span>
+<span class="ide-line-comment">// checks for the &#039;icanhasstarted&#039; variable to be true, and if it is, the only possibility is that</span>
+<span class="ide-line-comment">// loop() has already run, and so it does nothing, and only calls &#039;return&#039; to exit the function.</span>
+<span class="ide-line-comment">// P.S. calling return to exit the function doesn&#039;t stop it from running again, so it starts and stops</span>
+<span class="ide-line-comment">// ---- immediately, forever!</span>
+<span class="ide-keyword">void</span> <span class="ide-system-keyword">loop</span>() {
+  <span class="ide-line-comment">// No-loop protection.</span>
+  <span class="ide-system-keyword">if</span> (icanhasstarted == <span class="ide-keyword">true</span>) {
+    <span class="ide-system-keyword">return</span>; <span class="ide-line-comment">// dont run twice!</span>
+  }
+
+  serialHang(); <span class="ide-line-comment">// Wait for user&#039;s OK before starting the car.</span>
+
+
+  <span class="ide-line-comment">// Actual code that makes the car move.  It turns on the motors and turns</span>
+  <span class="ide-line-comment">// it off after a delay.  This is repeated for each meter.</span>
+  <span class="ide-system-keyword">for</span> (<span class="ide-keyword">int</span> i = 0; i &lt; meters; i++) {
+    <span class="ide-line-comment">// this is the only place where debug is called.</span>
+    debug(<span class="ide-string">&quot;new meter!&quot;</span>);
+    <span class="ide-platform-function">digitalWrite</span>(motor, <span class="ide-keyword">HIGH</span>); <span class="ide-line-comment">// turn on the motor</span>
+    <span class="ide-platform-function">delay</span>(metertime); <span class="ide-line-comment">// wait the time needed to go one meter</span>
+    <span class="ide-platform-function">digitalWrite</span>(motor, <span class="ide-keyword">LOW</span>); <span class="ide-line-comment">// turn off the motor while calculating</span>
+    debug(<span class="ide-string">&quot;meter completed... waiting!&quot;</span>); <span class="ide-line-comment">// log that a meter is done</span>
+    <span class="ide-platform-function">delay</span>(250); <span class="ide-line-comment">// wait for motor to be completely stopped.</span>
+  }
+  icanhasstarted = <span class="ide-keyword">true</span>; <span class="ide-line-comment">// make sure that loop() does not call again</span>
+}
+
+</code></pre>
