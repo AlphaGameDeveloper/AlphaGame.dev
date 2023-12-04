@@ -140,7 +140,8 @@ li.excerpt {
 }
 
 .blk {color: black;}
-
+$sizefix: 50%;
+.sizefix {max-height: $sizefix; max-width: $sizefix;}
 @mixin message() {
     border: 1px dashed #000000;
     margin-top: 5%;
