@@ -28,5 +28,7 @@ nav:
    link: "/about"
  - name: "Blog"
    link: /blog
+ - name: "School"
+   link: /school
  - name: GitHub
    link: https://github.com/AlphaGameDeveloper
