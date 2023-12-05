@@ -6,14 +6,14 @@ import os
 
 if os.path.isdir("output") == False:
     os.mkdir("output")
-    
+
 # damien dont be an idiot and open source your passwords you moron
 # ok past self ima not be an idiot :)
 CONNECT_INFO = {
-    "user": "admin",
-    "password": "PASSWORD",
-    "host": "HOST",
-    "database": "wordpress"
+    "user": os.getenv("USER"),
+    "password": os.getenv("PASSWORD"),
+    "host": os.getenv("HOST"),
+    "database": os.getenv("DATABASE")
 }
 
 connection = mysql.connector.connect(**CONNECT_INFO)
@@ -41,6 +41,6 @@ layout: post
 title: \"{0}\"
 ---
 {1}"""
-    with open(filename, "w") as file:
+    with open(filename, "wb") as file:
         data = template.format(title, content)
-        file.write(data)
+        file.write(data.encode('utf-8'))
