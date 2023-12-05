@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Nintendo Switch: A console that's lacking in the browser department"
+title: "The Nintendo Switch: A Console That's Lacking in the Browser Department"
 ---
 <!-- wp:paragraph -->
 <p>Ah, the Nintendo Switch, a beloved console that's perfect for gaming on the go, right? Well, not so fast! While the Switch has a lot of great features, there's one major aspect that it's lacking: an internet browser. That's right, you read it correctly, the Nintendo Switch doesn't have a built-in internet browser, which is pretty crazy when you think about it.</p>
