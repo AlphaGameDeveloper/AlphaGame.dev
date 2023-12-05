@@ -1,5 +1,15 @@
 {% if site.data.message.enabled %}
-<div id="site-message">
+<script>var togglemessage = function() {
+    let e = document.getElementById("site-message");
+    if (e.style.display === "block") {
+        e.style.display = "none";
+    } else if (e.style.display === "none") {
+        e.style.display = "block";
+    } else {
+        throw new Error("what the heck, bro? (message state not block nor none.) \\._./")
+    }
+}</script>
+<div id="site-message" style="display: block;">
     {% if site.data.message.type == "info" %}
     <p class="message-info">
     {% elsif site.data.message.type == "warn" %}
@@ -8,6 +18,7 @@
     <p class="message-generic">
     {% endif %}
         {{ site.data.message.message }}
+        <button style="border-radius: 5px; background-color: rgb(145, 83, 88);" onclick="togglemessage();">X</button>
     </p>
 </div>
 {% endif %}
