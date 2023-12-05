@@ -1,14 +1,13 @@
 ---
 layout: default
-title: License
 permalink: /license
 ---
 # Licensing
 Hey-
 
-Listen, I know that throwing licenses at you sounds like I am trying to take away your rights-- your rights to distribute my works, and build off of it.  I want to say the contrary--These license terms are meant to keep your freedoms to distribute, build off of, and do what you want with my works.
+Listen, I know that throwing licenses at you sounds like I am trying to take away your rights-- like I'm a stubborn *"IM GONNA SUE YOUR ASS RIGHT NOW!"* guy.  I want to say that, by licensing this content, I am <u>protecting</u> your rights to distribute my works, and build off of it.  I want to say that I am open-source by nature, and I don't want to take anyone's rights.  That goes against almost everything I believe in, being a strong believer in the open-source philosophy--These license terms are meant to keep your freedoms to distribute, build off of, and do what you want with my works. *(within reason)*
 
-Most open-source software *(yes, this website technically is not software)* are meant to take away your rights, but this site is licensed to protect said rights.  I want to tell you the terms of my software, and what you can and can not do with it.  All of my software is open-source, so it should not be so bad.  Setting a license on your works is important--[This is what GitHub says](https://choosealicense.com/no-permission/) on choosealicense.com.
+Most open-source software licenses *(yes, this website technically is not software<sup>[1]</sup>)* are meant to take away your rights, but this site is licensed to protect said rights.  I want to tell you the terms of my software, and what you can and can not do with it.  All of my software is open-source, so it should not be so bad.  Setting a license on your works is important--[This is what GitHub says](https://choosealicense.com/no-permission/) on choosealicense.com.
 
 ## This website
 
@@ -16,7 +15,7 @@ This website is licensed under the terms of the *Creative Commons Attribution 4.
 
 ### Terms
 1. **Permissions**
-    1.  Commercial use--You can use my works in a commercial environment free of charge
+    1.  Commercial use--You can use my works verbatim in a commercial environment free of charge
     2. Modification--You can modify my works
     3. Distribution--You can distribute my works, under the terms of the License 
     4. Private use--You can use my works for your own private reasons...Knock yourself out!
@@ -53,3 +52,5 @@ Thanks for reading through this-- I know it's boring, but it's best for everyone
 Cheers,
 
 - Damien
+
+*[1] Although it can, in some cases, be licensed as software--but I don't count this as software.  The only real software here is [Jekyll](https://jekyllrb.com), by my defenition.
