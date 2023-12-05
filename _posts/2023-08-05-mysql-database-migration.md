@@ -7,7 +7,7 @@ title: "MySQL Database Migration"
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
-<p>I just moved this site's MySQL database container.  It is no longer included in the site's docker-compose.yml file, and it is its own container now so that I can use the same container for multiple projects.  For the 2 of you who are actually interested, here is the <code>docker-compose.yml</code> file for just the database.</p>
+<p>I just moved this site's MySQL database container.  It is no longer included in the site's docker-compose.yml file, and it is its own container now so that I can use the same container for multiple projects.<!--more-->  For the 2 of you who are actually interested, here is the <code>docker-compose.yml</code> file for just the database.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:code -->

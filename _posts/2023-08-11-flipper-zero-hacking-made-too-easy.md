@@ -8,6 +8,7 @@ title: "Flipper Zero - Hacking made too easy?"
 
 <!-- wp:paragraph -->
 <p>Just a few days ago, I got my hands on a Flipper Zero device.  I had no idea what the device was at first (or what it was capable of), so I turned to Google for information.  It didn't take me long to get sucked down the rabbit hole of what people have done with these devices (The interesting, the odd, and the (let's face it--) illegal).  Here's my summary of the device after 3 days with it.</p>
+<!--more-->
 <!-- /wp:paragraph -->
 
 <!-- wp:heading -->

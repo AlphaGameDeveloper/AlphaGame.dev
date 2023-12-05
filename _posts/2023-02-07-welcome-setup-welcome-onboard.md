@@ -9,7 +9,7 @@ title: "Welcome & Setup (Welcome onboard!)"
 <!-- wp:paragraph -->
 <p>I'm so excited to finally share my latest project with all of you. As someone who loves technology and enjoys writing, starting a blog has been on my to-do list for a long time. And after months of hard work and determination, I'm finally here!</p>
 <!-- /wp:paragraph -->
-
+<!--more-->
 <!-- wp:paragraph -->
 <p>I wanted my blog to be more than just a platform for writing. I wanted it to be a showcase of my technical skills, too. So, I decided to use docker-compose, MySQL, and Wordpress to create my site. And let me tell you, it was a wild ride! But in the end, all the effort was worth it.</p>
 <!-- /wp:paragraph -->

@@ -7,7 +7,7 @@ title: "I screwed up... (Big time)"
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
-<p>This site has been down since March 5th, due to me screwing up Pi-Hole in Docker.  I made Docker use the <code>vfs</code> storage driver, instead of the default <code>overlay2</code> storage driver, which removed all the containers, their images, and everything... I had some trouble getting Pi-Hole DNS back so I can pull my images back into <code>vfs</code>, but everything is going well. (for now...)</p>
+<p>This site has been down since March 5th, due to me screwing up Pi-Hole in Docker.  I made Docker use the <code>vfs</code> storage driver,<!--more--> instead of the default <code>overlay2</code> storage driver, which removed all the containers, their images, and everything... I had some trouble getting Pi-Hole DNS back so I can pull my images back into <code>vfs</code>, but everything is going well. (for now...)</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->

@@ -7,7 +7,7 @@ title: "The data behind Minecraft servers!"
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
-<p>I created an "extension" for my Discord bot, that constantly (~5 minutes) pings Minecraft servers, and logs their response containing:</p>
+<p>I created an "extension" for my Discord bot, that constantly (~5 minutes) pings Minecraft servers, and logs their response<!--more--> containing:</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:list -->

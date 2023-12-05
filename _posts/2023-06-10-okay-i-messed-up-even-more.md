@@ -7,7 +7,7 @@ title: "OKAY.  I MESSED UP (EVEN MORE!)"
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
-<p>I messed up, AGAIN.  I <span style="text-decoration: underline;">ACTUALLY</span> think that this is the last time that this is going to happen.  Recently, the site was on a weird <code>/wp-admin/install.php</code> page, where the WordPress software was installed, and the MySQL database was all going well, but the installer was trying to get the software (that is already installed) installed AGAIN.</p>
+<p>I messed up, AGAIN.  I <span style="text-decoration: underline;">ACTUALLY</span> think that this is the last time that this is going to happen.  Recently, the site was on a weird <code>/wp-admin/install.php</code> page, <!--more-->where the WordPress software was installed, and the MySQL database was all going well, but the installer was trying to get the software (that is already installed) installed AGAIN.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
