@@ -13,7 +13,9 @@ tracking_id: "G-Y1CR4RKJQZ"
 
 footer: yes
 footer_url: "https://alphagame.dev/"
-footer_text: "Website copyright &copy; Damien Boisvert (AlphaGameDeveloper) 2023"
+footer_text: "Website copyright &copy; Damien Boisvert (AlphaGameDeveloper) 2023.  Some rights reserved."
+
+license: "Creative Commons Attribution 4.0 International"
 
 sass:
     style: compressed
