@@ -1,16 +1,46 @@
 {% if site.data.message.enabled %}
-<script>var togglemessage = function() {
-    let e = document.getElementById("site-message");
-    if (e.style.display === "block") {
-        e.style.display = "none";
-    } else if (e.style.display === "none") {
-        e.style.display = "block";
-    } else {
-        throw new Error("what the heck, bro? (message state not block nor none.) \\._./")
+<script>
+    "use strict";
+function setCookie(cname, cvalue) {
+    document.cookie = cname + "=" + cvalue + ";path=/";
+}
+function getCookie(cname) {
+    let name = cname + "=";
+    let ca = document.cookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
     }
-} 
+    return null;
+}
+function checkCookie(cookie) {
+    let c = getCookie(cookie);
+    if (c != "") {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+function closeMessage() {
+    let cookiename = "messageClosed";
+    let e = document.getElementById('site-message');
+    if (e === null) {
+        return;
+    } // typescript shit
+    e.style.display = "none";
+    setCookie(cookiename, "true");
+    return;
+}
+
 </script>
-<div id="site-message" style="display: block; cursor: crosshair;" onclick="togglemessage();">
+<div id="site-message" style="display: block; cursor: crosshair;" onclick="closeMessage();">
     {% if site.data.message.type == "info" %}
     <p class="message-info">
     {% elsif site.data.message.type == "warn" %}
@@ -21,4 +51,20 @@
         {{ site.data.message.message }}
     </p>
 </div>
+<script>(function () {
+    let e = document.getElementById('site-message');
+    let cookiename = "messageClosed";
+    if (e === null) {
+        return;
+    } // typescript shit
+    if (checkCookie(cookiename) === false) {
+        e.style.display = "block";
+        return;
+    }
+    if (getCookie(cookiename) != "") {
+        e.style.display = "none";
+        return;
+    }
+    e.style.display = "block"; // default
+})();</script>
 {% endif %}
