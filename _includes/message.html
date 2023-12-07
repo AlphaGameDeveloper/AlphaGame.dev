@@ -61,7 +61,7 @@ function closeMessage() {
         e.style.display = "block";
         return;
     }
-    if (getCookie(cookiename) != "") {
+    if (getCookie(cookiename) === "" || getCookie(cookiename) === null) {
         e.style.display = "none";
         return;
     }
