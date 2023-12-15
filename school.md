@@ -9,4 +9,4 @@ This part of this website is dedicated to school stuff.  It is publically availa
     - [Rube Goldberg Machines](/school/9/rubegoldberg)
     - [Physics of Sports](/school/9/physicsofsports)
     - [Fire Away](/school/9/fireaway)
-    - [Alternate Energy Vehicle](/school/9/physicsofsports)
+    - [Alternate Energy Vehicle](/school/9/alternate-energy-car)

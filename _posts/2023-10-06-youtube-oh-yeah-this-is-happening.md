@@ -7,7 +7,7 @@ title: "YouTube: OH YEAH, THIS IS HAPPENING!"
 <p>As the great philosopher Sonic The Hedgehog once said, "Oh, yeah!  This is happening!"</p>
 <!-- /wp:paragraph --><cite>MattKC, <em>LEGO Island decomp #1</em></cite></blockquote>
 <!-- /wp:quote -->
-
+<!--more-->
 <!-- wp:paragraph -->
 <p>I've always been interested in YouTube.  Starting in STINKING 2017, before COVID, the dawn of <em>"modern</em>?" times.  Let's be honest, it sucked so much, that even though the most cringe was private, I almost died looking at it.  I recently thought that I would start doing YouTube, and do cool stuff and not almost kill my future self, which I have miraculously managed to not do with this blog. <em>(yet)</em>.  Wish I knew that in 2017 and 2019! Announcements are good.  I know that I will do nerd stuff there, but I am not sure yet.  Ideas are MORE than welcome! I'm thinking programming and maybe some gaming.  I just got a green screen for this-- that'll be fun!</p>
 <!-- /wp:paragraph -->

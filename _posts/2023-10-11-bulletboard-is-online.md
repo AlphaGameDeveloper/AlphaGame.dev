@@ -11,7 +11,7 @@ title: "BulletBoard is online!"
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
-<p>I can't wait! <em>(nervous laughter)</em></p>
+<p>I can't wait! <em>(nervous laughter)</em></p><!--more-->
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
