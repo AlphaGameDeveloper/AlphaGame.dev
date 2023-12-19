@@ -27,7 +27,8 @@ title: "Running an Arduino directly off of solar panels... (PART 1: Planning)"
 <!-- /wp:paragraph -->
 
 <!-- wp:code -->
-<pre class="wp-block-code"><code>/*
+```c++
+/*
   Low power car.  Code by Damien Boisvert.
   
   This program is licensed under MIT.
@@ -101,7 +102,8 @@ void loop() {
       delay(betweenMeterDelay);
       
     }
-}</code></pre>
+}
+```
 <!-- /wp:code -->
 
 <!-- wp:paragraph -->
