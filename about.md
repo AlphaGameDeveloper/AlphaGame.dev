@@ -1,5 +1,6 @@
 ---
-layout: default
+layout: redirect
+location: /
 permalink: /about
 ---
 ## Okay, okay, you caught me...
