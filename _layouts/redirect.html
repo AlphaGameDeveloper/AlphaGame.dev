@@ -1,0 +1,27 @@
+{{ page.location }}
+<!-- Hey!
+You may be wondering, what the heck is wrong with this page?
+Here's what-- It's a page that instructs your web browser to
+redirect to another page.  This is used to prevent link rot.
+
+i may have put too much effort into this.
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Redirect &bull; {{ site.title }}</title>
+    <meta http-equiv="refresh" content="1; URL='{{ page.location }}'" /> 
+    <style>
+      body {text-align: center; margin-left: auto; margin-right: auto;}
+      a,a:visited {color: blue;}
+    </style>
+  </head>
+  <body>
+    <h1>Redirecting...</h1>
+    <hr />
+    <p>You have come across a page that wants to redirect you somewhere else.</p>
+    <p>The redirect should happen in a second, but if it does not, please click <a href="{{ page.location }}">here</a>.</p>
+    <hr />
+    <p style="margin-top: 5%; font-style: italic;">This website is copyright &copy; Damien Boisvert (AlphaGameDeveloper) 2023.  Some rights reserved.</p>
+  </body>
+</html>
