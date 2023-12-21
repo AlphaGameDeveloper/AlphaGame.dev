@@ -32,3 +32,11 @@ nav:
    link: /school/
  - name: GitHub
    link: https://github.com/AlphaGameDeveloper
+
+author: damienboisvert
+
+feed:
+  path: /feed
+
+plugins:
+  - jekyll-feed
