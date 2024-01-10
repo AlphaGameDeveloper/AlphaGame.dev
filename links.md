@@ -1,7 +1,7 @@
 ---
 layout: default
 title: My Links
-permalink: /links
+permalink: /links/
 ---
 * [GitHub](https://github.com/AlphaGameDeveloepr)
 * [Website](https://alphagame.dev)
