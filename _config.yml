@@ -30,8 +30,8 @@ nav:
    link: /blog
  - name: "School"
    link: /school/
- - name: GitHub
-   link: https://github.com/AlphaGameDeveloper
+ - name: "Socials"
+   link: /links/
 
 author: damienboisvert
 
