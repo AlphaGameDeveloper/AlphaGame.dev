@@ -10,3 +10,4 @@ This part of this website is dedicated to school stuff.  It is publically availa
     - [Physics of Sports](/school/9/physicsofsports)
     - [Fire Away](/school/9/fireaway)
     - [Alternate Energy Vehicle](/school/9/alternate-energy-car)
+    - [3D Printed Homeless Houses (Solve a World Problem)](/school/9/3dhomelesshouse) - 1.22.2024
