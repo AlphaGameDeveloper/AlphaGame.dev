@@ -4,6 +4,11 @@
     <a href="{{ site.footer_url }}" style="color: black"><small>{{ site.footer_text }}</small></a>
     </p>
     <p style="text-align: center;">
+    {% if page.modified %}
+    <small id="page-last-updated">This page was last updated on {{ page.modified }}.</small><br />
+    {% else %}
+    <!-- This page had no page.modified, so that section was excluded from the website build. -->
+    {% endif %}
     <small>Site last updated: <b>{{ site.time }}</b></small>
     </p>
     <p style="text-align: center; margin-bottom: 10px;">
