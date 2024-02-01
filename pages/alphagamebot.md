@@ -13,7 +13,7 @@ AlphaGameBot is yet another Discord bot.  It was made in Discord.py and designed
 * Commands for pinging Minecraft servers (Java & Bedrock) (**/minecraft java** and **/minecraft bedrock**)
 * Safe--I value privacy, so we don't have accounts to deal with :)
     * *100% not because i was lazy :)*
-* **A creator who actually listens!  I love a good challenge, so if you habe any ideas for commands, I would be excited to add it!**
+* **A creator who listens!  I love a good challenge, so if you have any ideas for commands, I would be excited to add it!**
     * Made *for the people*, ***by the people***.
 
 ## Give AlphaGameBot a shot!
