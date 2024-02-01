@@ -1,5 +1,6 @@
 ---
 layout: default
+permalink: /
 ---
 
 <img class="profile-picture" src="/assets/1000059909pfp.jpg">
