@@ -1,3 +1,3 @@
-enabled: true
-type: "warn" # allow: info,warn
+enabled: false
+type: "info" # allow: info,warn
 message: "This site is now fully on GitHub pages now!  Most bugs should have been fixed by now.  No sussy behavior, now! ;)"
