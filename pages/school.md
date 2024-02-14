@@ -16,3 +16,5 @@ My gratuation A-G requirements can be found [here](/school/graduation)
         - [3D Printed Homeless Houses (Solve a World Problem)](/school/9/3dhomelesshouse) - 1.22.2024
     - English
         - [Poetry Portfolio](/school/9/poetryportfolio/)
+    - College and Career Readiness (CCR)
+        - [Indigo DISC Highlights](/school/9/disc-highlights/)
