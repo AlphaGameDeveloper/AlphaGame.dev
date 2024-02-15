@@ -2,10 +2,21 @@
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.tracking_id }}"></script>
 <script>
+  // i literally have no idea how to do this lol
+
+  // initalize google gtag.js
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
+  // Tell gtag.js my tracking ID
   gtag('config', '{{ site.tracking_id }}');
+
+  // tell google that someone visited this webpage.
+  gtag('send', 'pageview');
+
+
+  // NOTE: if someone knows a problem that I did, 
+  // please let me know lol. ;)
 </script>
 <!-- END TEMPLATE gtag.html -->
