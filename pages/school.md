@@ -14,6 +14,7 @@ My gratuation A-G requirements can be found [here](/school/graduation)
         - [Fire Away](/school/9/fireaway)
         - [Alternate Energy Vehicle](/school/9/alternate-energy-car)
         - [3D Printed Homeless Houses (Solve a World Problem)](/school/9/3dhomelesshouse) - 1.22.2024
+        - [Outdoor Furniture Design](/school/9/outdoor-furniture-design) - 3.4.2024
     - English
         - [Poetry Portfolio](/school/9/poetryportfolio/)
     - College and Career Readiness (CCR)
