@@ -25,3 +25,8 @@ AlphaGameBot is yet another Discord bot.  It was made in Discord.py and designed
 
 ## If you are a server admin...
 Hi, fellow server admin!  I wanted to say that if you are getting spammed by requests from AlphaGameBot (User agent is usually: `python-requests/2.31.0; curl/8.4.0; AlphaGameBot/1; https://alphagame.dev/ +damien@alphagame.dev`), I'm sorry for this bug.  I try to keep my bot from irresponsibly spamming servers, but sometimes I make mistakes.  If you have a problem with the bot, please do not block it; rather, please send me an email at [damien@alphagame.dev](mailto:damien@alphagame.dev), so I can fix this in AlphaGameBot.  Thanks!
+<<<<<<< Updated upstream:pages/alphagamebot.md
+=======
+
+*You can also create a GitHub issue.*
+>>>>>>> Stashed changes:alphagamebot.md

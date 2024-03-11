@@ -1,3 +1,4 @@
+<!-- BEGIN TEMPLATE message.html -->
 {% if site.data.message.enabled %}
 <script>
     "use strict";
@@ -51,20 +52,11 @@ function closeMessage() {
         {{ site.data.message.message }}
     </p>
 </div>
-<!-- <script>(function () {
-    let e = document.getElementById('site-message');
-    let cookiename = "messageClosed";
-    if (e === null) {
-        return;
-    } // typescript shit
-    if (checkCookie(cookiename) === false) {
-        e.style.display = "block";
-        return;
-    }
-    if (getCookie(cookiename) === "" || getCookie(cookiename) === null) {
-        e.style.display = "none";
-        return;
-    }
-    e.style.display = "block"; // default
-})();</script> -->
+{% else %}
+<!-- there was no message in this website build, so it was excluded.
+CURRENT DATA: 
+type: "{{ site.data.message.type }}", 
+enabled: "{{ site.data.message.enabled }}",
+message: {{ site.data.message.message }} -->
 {% endif %}
+<!-- END TEMPLATE message.html -->
