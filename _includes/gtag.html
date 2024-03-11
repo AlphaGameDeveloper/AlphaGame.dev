@@ -24,6 +24,7 @@
   document.addEventListener('DOMContentLoaded', function() {
     // Function to track link clicks
     function trackLinkClick(event) {
+      console.log("trackLinkClick called");
         // Check if Google Analytics is loaded
         if (typeof ga === 'function') {
             // Send a pageview event to Google Analytics
