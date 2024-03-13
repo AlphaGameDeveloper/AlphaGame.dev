@@ -7,6 +7,9 @@ permalink: /school/
 This part of this website is dedicated to school stuff.  It is publically available, but not meant to be part of the main website.  Here is a list of the school pages that are currently published.
 
 My graduation A-G requirements can be found [here](/school/graduation)
+
+My [Indigo](https://indigotheassessment.com/) report can be found [here](/school/indigo), or if you wish, the full 16-page PDF document can be found [here](/assets/school/Boisvert_Damien_indigo.pdf).
+
 - 9th Grade
     - [STEM Marin](https://stemmarin.nusd.org/)
         - [Rube Goldberg Machines](/school/9/rubegoldberg)
