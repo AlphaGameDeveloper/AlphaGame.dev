@@ -18,6 +18,7 @@ My [Indigo](https://indigotheassessment.com/) report can be found [here](/school
         - [Alternate Energy Vehicle](/school/9/alternate-energy-car)
         - [3D Printed Homeless Houses (Solve a World Problem)](/school/9/3dhomelesshouse) - 1.22.2024
         - [Outdoor Furniture Design](/school/9/outdoor-furniture-design) - 3.4.2024
+        - [Frequency (Build A Band)](/school/9/frequency)
     - English
         - [Poetry Portfolio](/school/9/poetryportfolio/)
     - College and Career Readiness (CCR)
