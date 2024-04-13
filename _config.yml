@@ -40,8 +40,10 @@ nav:
    link: "/about"
  - name: "Blog"
    link: /blog
- - name: "School"
-   link: /school/
+# - name: "School"
+#   link: /school/
+ - name: "AlphaGameBot"
+   link: /alphagamebot/
  - name: "Socials"
    link: /links/
 
