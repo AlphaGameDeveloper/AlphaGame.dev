@@ -22,6 +22,8 @@ The FAQ can be found [here](/alphagamebot/faq).
 
 The AlphaGameBot *Terms of Service* can be found [here](/alphagamebot/terms)
 
+The AlphaGameBot *Privacy Policy* can be found [here](/alphagamebot/privacy)
+
 | Description                  | Join link                                                                                      | Comment                                             |
 |------------------------------ |-----------------------------------------------------------------------------------------------|-----------------------------------------------------|
 | Future-proof<br>(Administrator)| [Invite as admin](https://discord.com/api/oauth2/authorize?client_id=946533554953809930&permissions=8&scope=bot) | Recommended, but not required.                       |
