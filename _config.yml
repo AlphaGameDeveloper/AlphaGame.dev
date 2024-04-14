@@ -1,5 +1,9 @@
 title: AlphaGameDeveloper
-url: ""
+url: "https://alphagame.dev/"
+
+# note to self: dont set if it is running in the root dir
+# problems like linking to //style.css (note the two slashes)
+# will occur.
 baseurl: ""
 
 permalink: /blog/:year/:month/:title
@@ -17,6 +21,14 @@ footer_text: "Website copyright &copy; Damien Boisvert (AlphaGameDeveloper) 2024
 
 license: "Creative Commons Attribution 4.0 International"
 
+keywords:
+  - damien
+  - boisvert
+  - damienboisvert
+  - alphagamedeveloper
+  - gamedev
+  - alphagame
+
 sass:
     style: compressed
     sass_dir: _sass
@@ -28,15 +40,19 @@ nav:
    link: "/about"
  - name: "Blog"
    link: /blog
- - name: "School"
-   link: /school/
+# - name: "School"
+#   link: /school/
+ - name: "AlphaGameBot"
+   link: /alphagamebot/
  - name: "Socials"
    link: /links/
 
 author: damienboisvert
 
 feed:
-  path: /feed
+  path: /feed.xml
 
 plugins:
   - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap 

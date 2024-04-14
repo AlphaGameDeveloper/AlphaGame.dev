@@ -1,3 +1,12 @@
 <!-- BEGIN TEMPLATE head.html -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="/assets/js/secret-jam-session.js"></script>
+{% seo %}
+{% if page.title %}
+<!-- page.title exists, using that. -->
+<title>{{ page.title }} &bull; {{ site.title }}</title>
+{% else %}
+<!-- page.title does not exist, defaulting to site.title -->
+<title>{{ site.title }}</title>
+{% endif %}
 <!-- END TEMPLATE head.html -->
