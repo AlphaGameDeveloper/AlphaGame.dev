@@ -20,6 +20,8 @@ AlphaGameBot is yet another Discord bot.  It was made in Discord.py and designed
 
 The FAQ can be found [here](/alphagamebot/faq).
 
+The AlphaGameBot *Terms of Service* can be found [here](/alphagamebot/terms)
+
 | Description                  | Join link                                                                                      | Comment                                             |
 |------------------------------ |-----------------------------------------------------------------------------------------------|-----------------------------------------------------|
 | Future-proof<br>(Administrator)| [Invite as admin](https://discord.com/api/oauth2/authorize?client_id=946533554953809930&permissions=8&scope=bot) | Recommended, but not required.                       |
