@@ -4,6 +4,8 @@ permalink: /alphagamebot/terms
 title: AlphaGameBot ToS
 modified: 4/13/2024
 ---
+[<- Return to AlphaGameBot](/alphagamebot/)
+
 # AlphaGameBot Terms of Service
 While AlphaGameBot is free and open-source, there are a few things that I expect from you, the bot user; and that you can expect from me.  This will let you know what your rights are while using AlphaGameBot.
 

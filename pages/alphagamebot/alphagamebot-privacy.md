@@ -4,6 +4,7 @@ permalink: /alphagamebot/privacy
 title: AlphaGameBot Privacy Policy
 modified: 4/13/2024
 ---
+[<- Return to AlphaGameBot](/alphagamebot/)
 
 # AlphaGameBot Privacy Policy
 AlphaGameBot is quite privacy-focused.  It does not track much data, and the data it *does* track
