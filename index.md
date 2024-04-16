@@ -1,22 +1,34 @@
 ---
 layout: default
 permalink: /
+title: Home
 ---
 
-<img class="profile-picture" src="/assets/1000059909pfp.jpg">
+<img class="profile-picture" src="/assets/1000059909pfp.jpg" alt="My School Picture">
 
-## Hey, there!
-My name is Damien Boisvert, but I am more commonly known on the Internet as AlphaGameDeveloper, or AlphaGameDev.  I find that funny, as my main focus has shifted away from game development a bit. :)  Nevertheless, here I am.  I exist.  I am 14 years old, and I have a passion for computers, programming, you name it.
+# AlphaGameDeveloper
+
+## Hi, I'm Damien.
+My name is Damien Boisvert, but I am more commonly known on the Internet as AlphaGameDeveloper, or AlphaGameDev.  I am 14 years old, and have a passion for computers, programming, and networking.  I am a contributor to open-source software on my [GitHub][github].
+
+I am in 9<sup>th</sup> grade, and am currently working on getting my Cisco certifications.  I also write on my [blog](/blog) in my spare time, and also work on my Discord bot, [AlphaGameBot](/alphagamebot/). ([Learn more!](/about/))
+
+By night, I am a hardcore MBTI nerd, writing algorithms and research the *Myers-Briggs Type Indicator* personality system.  I am an [ENTP][entp-personality] personality (also known as *"The Debater"*) and a [7w8][7w8-annegram] on annegram.  My alignment is [Chaotic Neutral][chaotic-neutral].
 ## Accomplishments
-- Didn't touch grass record - 7 days
 - Memorized one hundred digits of the mathematical constant pi (π)
     - Made sixty of which out of wine corks, and hung it on my wall (took about 3 full walls!)
 - Memorized 80 elements of the Periodic Table of the Elements
-- Professional nerd :)
+- Helped write an algorithm to convert [Indigo][indigo] DISC scores to *Myers-Briggs Type Indicator (MBTI)* types.
+ - Professional nerd :)
 - Listened to *Mr. Blue Sky* for 4 hours straight
-
-<!-- removed due to problems with lightspeed filter agent on school chromebooks -->
-<!-- - Hacked like 20 school chromebooks lol
-     - Made the world's stupidest computer virus lmao [#WannaDoge](https://github.com/AlphaGameDeveloper/WannaDoge) which *(suprise, suprise)* sucks so much I can't even read the code, myself (and that's saying something!) -->
+ - Hacked like 20 school chromebooks lol
+ - Made the world's stupidest computer virus lmao [#WannaDoge][wannadoge] which *(suprise, suprise)* sucks so much I can't even read the code, myself (and that's saying something!)
 - Abused Docker a million times to get root on the host machine lmao
 - **Working on more!**
+
+[7w8-annegram]: https://www.crystalknows.com/enneagram/type-7/wing-8
+[chaotic-neutral]: https://easydamus.com/chaoticneutral.html
+[entp-personality]: https://16personalities.com/entp-personality
+[github]: https://github.com/AlphaGameDeveloper
+[indigo]: https://indigotheassessment.com
+[wannadoge]: https://github.com/AlphaGameDeveloper/WannaDoge

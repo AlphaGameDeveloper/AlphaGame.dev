@@ -22,4 +22,7 @@ Hi!  My name is Damien, but on the World Wide Web, I usually go by AlphaGameDeve
 * Jinja2
 
 ## MBTI, Alignment, and Annegram
-For all you MBTI nerds (You're in good company!  I am also a MBTI nerd), I am a [ENTP Personality Type](https://16personalities.com/entp-personality), also called *"The Debater"*.  My alignment is [Chaotic Neutral](https://easydamus.com/chaoticneutral.html). and my annegram is 7w8. 
+For all you MBTI nerds (You're in good company!  I am also a MBTI nerd), I am a [ENTP Personality Type][entp-personality], also called *"The Debater"*.  My alignment is [Chaotic Neutral][chaotic-neutral]. and my annegram is 7w8. 
+
+[entp-personality]: https://16personalities.com/entp-personality
+[chaotic-neutral]: https://easydamus.com/chaoticneutral.html
