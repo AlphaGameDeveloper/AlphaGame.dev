@@ -22,11 +22,11 @@ website, here is a HTML snippet for you!
 
 **Minified version (loads faster)**
 ```html
-<script src="https://alphagame.dev/assets/js/konamirickroll.min.js"></script>
+<script src="https://alphagame.dev/assets/js/konamirickroll/konamirickroll.min.js"></script>
 ```
 **Full version (Human-readable code)**
 ```html
-<script src="https://alphagame.dev/assets/js/konamirickroll.js"></script>
+<script src="https://alphagame.dev/assets/js/konamirickroll/konamirickroll.js"></script>
 ```
 
 Cheers,
