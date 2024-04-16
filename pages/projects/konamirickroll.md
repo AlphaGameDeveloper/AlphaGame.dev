@@ -17,7 +17,7 @@ The Konami Code, also called the *Contra Code* or *30 Lives code* is a cheat-cod
 The code is as follows: **UP, UP, DOWN, DOWN, LEFT, RIGhT, LEFT, RIGHT, B, A**
 
 ## Try it for yourself!
-KonamiRickroll works on [alphagame.dev)(https://alphagame.dev), so you can try it for yourself here.  If you want to embed it in *your*
+KonamiRickroll works on [alphagame.dev](https://alphagame.dev), so you can try it for yourself here.  If you want to embed it in *your*
 website, here is a HTML snippet for you!
 
 **Minified version (loads faster)**
@@ -31,3 +31,4 @@ website, here is a HTML snippet for you!
 
 Cheers,
 - Damien B. (AlphaGameDeveloper)
+
