@@ -13,7 +13,8 @@ My name is Damien Boisvert, but I am more commonly known on the Internet as Alph
 
 I am in 9<sup>th</sup> grade, and am currently working on getting my Cisco certifications.  I also write on my [blog](/blog) in my spare time, and also work on my Discord bot, [AlphaGameBot](/alphagamebot/). ([Learn more!](/about/))
 
-By night, I am a hardcore MBTI nerd, writing algorithms and research the *Myers-Briggs Type Indicator* personality system.  I am an [ENTP][entp-personality] personality (also known as *"The Debater"*) and a [7w8][7w8-annegram] on annegram.  My alignment is [Chaotic Neutral][chaotic-neutral].
+By night, I am a hardcore MBTI nerd, writing algorithms and research the *Myers-Briggs Type Indicator* personality system.  I am an [ENTP][entp-personality] personality (also known as *"The Debater"*) and a [7w8][7w8-annegram] on annegram.  My alignment is [Chaotic Neutral][chaotic-neutral].  My MBTI stuff can be found [here](/mbti/)!
+
 ## Accomplishments
 - Memorized one hundred digits of the mathematical constant pi (π)
     - Made sixty of which out of wine corks, and hung it on my wall (took about 3 full walls!)
