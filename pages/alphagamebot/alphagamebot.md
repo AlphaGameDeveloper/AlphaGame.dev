@@ -25,13 +25,14 @@ The AlphaGameBot *Terms of Service* can be found [here](/alphagamebot/terms)
 
 The AlphaGameBot *Privacy Policy* can be found [here](/alphagamebot/privacy)
 -->
+
 | Description                  | Join link                                                                                      | Comment                                             |
 |------------------------------ |-----------------------------------------------------------------------------------------------|-----------------------------------------------------|
 | Future-proof<br>(Administrator)| [Invite as admin](https://discord.com/api/oauth2/authorize?client_id=946533554953809930&permissions=8&scope=bot) | Recommended, but not required.                       |
 | Only permissions<br>it needs  | [Invite the bot!](https://discord.com/api/oauth2/authorize?client_id=946533554953809930&permissions=39859552415312&scope=bot) | You may have to change permissions yourself, as this bot is constantly evolving! |
 
 ## If you are a server admin...
-Hi, fellow server admin!  I wanted to say that if you are getting spammed by requests from AlphaGameBot (User agent is usually: `python-requests/2.31.0; curl/8.4.0; AlphaGameBot/1; https://alphagame.dev/ +damien@alphagame.dev`), I'm sorry for this bug.  I try to keep my bot from irresponsibly spamming servers, but sometimes I make mistakes.  If you have a problem with the bot, please do not block it; rather, please send me an email at [damien@alphagame.dev](mailto:damien@alphagame.dev), so I can fix this in AlphaGameBot.  Thanks!
+Hi, fellow server admin!  I wanted to say that if you are getting spammed by requests from AlphaGameBot (User agent is usually: `AlphaGameBot/(version); (https://alphagame.dev/alphagamebot +damien@alphagame.dev); python-requests/2.31.0; curl/8.4.0;`), I'm sorry for this bug.  I try to keep my bot from irresponsibly spamming servers, but sometimes I make mistakes.  If you have a problem with the bot, please do not block it; rather, please send me an email at [damien@alphagame.dev](mailto:damien@alphagame.dev), so I can fix this in AlphaGameBot.  Thanks!
 
 *You can also create a GitHub issue.*
 
