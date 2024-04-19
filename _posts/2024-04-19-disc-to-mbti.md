@@ -1,7 +1,6 @@
 ---
 layout: default
-title: DISC to MBTI algorithm
-published: false
+title: DISC to MBTI Algorithm
 ---
 <!--more-->
 # DISC to MBTI
@@ -48,6 +47,35 @@ because of the traits *Extraverted, Intuitive, Thinking, and Prospecting*.
 ## How can we convert them?
 MBTI and DISC share lots of key similarities, yes, but they also share many differences that must be smoothed
 out when converting.
+
+## Let's get converting!
+### Introverted or Extraverted
+This one is very easy.  Being Introverted *(I)*, or Extraverted *(E)*, can be determined using your *Influencing* score.
+This connection is put in your Indigo Report, so this is undeniable.
+
+* **Low I** = Introverted
+* **High I** = Extraverted
+
+### Intuitive or Sensing
+This can be determined based on your *Compliance* score.  This is difficult, but it's said that High C's are very observant,
+and quite analytical.  
+
+* **Low C** = Intuitive
+* **High C** = Sensing
+
+
+### Thinking or Feeling
+This can be debatable, but we think that High D is Thinking, and low D is feeling.  This can sound a bit far-fetched so
+hear me out-- Low D people tend to be more empathetic and emotion.  This makes High D people Thinkers.
+
+* **Low D** = Feeling
+* **High D** = Thinking
+
+There ya go!  We now have a system to convert MBTI to DISC!  I will also include a converter that can be found [here](/mbti/disc-to-mbti-converter)!
+Have fun and start converting!
+
+Cheers,
+- Damien Boisvert (AlphaGameDeveloper)
 
 [16p]: https://16personalities.com
 [16p-entp]: https://16personalities.com/entp-personality
