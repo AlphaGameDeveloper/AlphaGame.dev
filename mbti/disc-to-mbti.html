@@ -1,0 +1,103 @@
+---
+layout: default
+permalink: /mbti/disc-to-mbti-converter
+title: DISC to MBTI Converter
+---
+
+<h1>DISC to MBTI Converter!</h1>
+<p>Convert your DISC Scores here!</p>
+
+<p>This converter would not have been possible without the help of my friend Holden!  His blog post can be found
+<a href="https://combinesoldier14.blogspot.com/2024/03/how-i-wrote-algorithm-that-converts.html">here</a>!</p>
+
+<style>
+	#MBTIOutputSection {
+		border-top: 1px solid #000000;
+		border-bottom: 1px solid #000000;
+		font-weight: bold;
+		display: none;
+	}
+
+</style>
+<script>
+var isValidInput = function(value) {
+	if (value === "" || value < 0 || value > 100) {
+		return true;
+	}
+	return false;
+}
+var startConversion = function() {
+	const _d = document.getElementById('d-score').value;
+	const _i = document.getElementById('i-score').value;
+	const _s = document.getElementById('s-score').value;
+	const _c = document.getElementById('c-score').value;
+	
+	if (isValidInput(_d) || isValidInput(_i) || isValidInput(_s) || isValidInput(_c)) {
+		alert("Invalid Inputs.\n\nAll inputs must be:\n(1) Not Blank\n(2) Not less than zero\n(3) Not greater than 100\n\nPlease try again.");
+		return;
+	}
+	
+	let _e = document.getElementById('outputLocation');
+	let _l = document.getElementById('MBTIOutputSection');
+	_e.innerText = convert(_d, _i, _s, _c);
+	_l.style.display = "block";
+}
+var convert = function(d, i, s, c) {
+	let IE = null;
+	let NS = null;
+	let TF = null;
+	let PJ = null;
+	
+	// Dominance - Thinking / Feeling
+	if (d >= 50) {
+		TF = "T";
+	} else {
+		TF = "F";
+	}
+	
+	// Influencing - Introverted / Extraverted
+	if (i >= 50) {
+		IE = "E";
+	} else {
+		IE = "I";
+	}
+	
+	// Steadiness - Prospecting or Judging
+	if (s >= 50) {
+		PJ = "J";
+	} else {
+		PJ = "P";
+	}
+	
+	if (c >= 50) {
+		NS = "S";
+	} else {
+		NS = "N";
+	}
+	
+	return IE + NS + TF + PJ
+}
+
+</script>
+
+<div id="converter">
+	<label>
+		Dominance: 
+		<input type="number" placeholder="Dominance Score" id="d-score" />
+	</label><br />
+	<label>
+		Influencing:
+		<input type="number" placeholder="Influencing Score" id="i-score" />
+	</label><br />
+	<label>
+		Steadiness: 
+		<input type="number" placeholder="Steadiness Score" id="s-score" />
+	</label><br />
+	<label>
+		Compliance: 
+		<input type="number" placeholder="Compliance Score" id="c-score" />
+	</label><br />
+	<button onclick="startConversion();">Convert!</button>
+	
+	<p align="center" id="MBTIOutputSection">Your MBTI is: <span id="outputLocation">(Please run the converter!)</span></p>
+</div>
