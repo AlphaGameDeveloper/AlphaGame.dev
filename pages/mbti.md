@@ -11,7 +11,7 @@ I am a hardcore MBTI *(Myers-Briggs Type Indicator)* nerd.  Othen, I do some of 
 MBTI stands for the *Myers-Briggs Type Indicator*, a system to express everyone's unique personality as one of the 16 types.  MBTI types consist of four letters, with four individual traits.  Because *4<sup>2</sup> = 16*, we get our 16 personalities.  
 
 ## MBTI Research / Projects
-* [DISC to MBTI Converter](/mbti/disc-to-mbti-converter) - Convert your DISC scores to the Myers-Briggs Type Indicator!
+* [DISC to MBTI Converter](/mbti/disc-to-mbti-converter) - Convert your DISC scores to the Myers-Briggs Type Indicator!  More information can be found in the [blog post]({% post_url 2024-04-19-disc-to-mbti %})
 
 <!-- Here's a quick rundown about how the system works -->
 <!--
