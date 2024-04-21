@@ -40,7 +40,7 @@ Hi, fellow server admin!  I wanted to say that if you are getting spammed by req
 <p align="center">
    <b>
       By adding AlphaGameBot to your Discord server, you agree to AlphaGameBot's
-      <a href="/alphagamebot/terms/">Terms of Service</a> and
+      <a href="/alphagamebot/terms">Terms of Service</a> and
       <a href="/alphagamebot/privacy">Privacy Policy</a>.
    </b>
 </p>
