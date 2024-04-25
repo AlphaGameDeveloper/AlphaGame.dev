@@ -8,7 +8,7 @@ title: Projects
 # Projects
 Here are some projects I make in my spare time.  Feel free to check them out!  
 
-* [AlphaOS](/alphaos/) - Linux Distro made in Python!
+* [AlphaOS](/projects/alphaos) - Linux Distro made in Python!
 * [DISC to MBTI Converter](/mbti/disc-to-mbti-converter) - Convert your DISC scores to MBTI!
 * [KonamiRickroll](/projects/konamirickroll) - Add a rickroll to your website via the Konami code
 
