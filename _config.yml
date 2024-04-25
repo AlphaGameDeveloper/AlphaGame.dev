@@ -1,5 +1,5 @@
 title: AlphaGameDeveloper
-url: "https://alphagame.dev/"
+url: "https://alphagame.dev"
 
 # note to self: dont set if it is running in the root dir
 # problems like linking to //style.css (note the two slashes)
