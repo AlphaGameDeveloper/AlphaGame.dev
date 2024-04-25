@@ -1,7 +1,7 @@
 ---
 title: AlphaOS
 layout: default
-permalink: /alphaos/
+permalink: /projects/alphaos/
 ---
 # AlphaOS
 Previously known as DamienOS, this is a small hobby [Linux](https://kernel.org) distro made in Python
