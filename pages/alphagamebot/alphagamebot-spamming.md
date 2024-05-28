@@ -22,7 +22,7 @@ For reporting the bug, you have 2 options:
 
 Or, if you eel like you can do it better, feel free to make a pull request!  The GitHub repository is [here](https://github.com/AlphaGameBot/AlphaGameBot)!
 ## Bot User Agent
-As it is basic API usage etiquette, the bot does have it's own user agent.  The bot's user agent is usually `AlphaGameBot/(version) )https://alphagame.dev/alphagamebot/spamming +damien@alphagame.dev); python-requests/(version); curl/8.4.0`
+As it is basic API usage etiquette, the bot does have it's own user agent.  The bot's user agent is usually `AlphaGameBot/(version) (https://alphagame.dev/alphagamebot/spamming +damien@alphagame.dev); python-requests/(version); curl/8.4.0`
 
 *Note: There might be slight variations to this user agent, such as `(development edition)` for development builds.*
 
