@@ -17,4 +17,10 @@ taken with the [16 Personalities][16personalities-test] test.
 |90%         |Prospecting     |
 |54%         |Turbulant       |
 
+*Note: Even with cognitive functions, these still stand.*
+
+I am 7 wing 8 on Enneagram, tritype 783.
+
+
+
 [16personalities-test]: https://www.16personalities.com/free-personality-test

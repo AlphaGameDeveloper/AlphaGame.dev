@@ -8,6 +8,8 @@ AlphaGameBot is yet another Discord bot.  It was made in Discord.py and designed
 
 **The FAQ can be found [here](/alphagamebot/faq)!**
 
+**The GitHub repository can be found [here](https://github.com/AlphaGameBot/AlphaGameBot), and the WebUI [here](https://github.com/AlphaGameBot/WebUI)**
+
 ## Features
 * Local 49ers fan :)
 * XKCD Integrations with **/xkcd**
@@ -17,14 +19,9 @@ AlphaGameBot is yet another Discord bot.  It was made in Discord.py and designed
     * *100% not because i was lazy :)*
 * **A creator who listens!  I love a good challenge, so if you have any ideas for commands, I would be excited to add it!**
     * Made *for the people*, ***by the people***.
+* Nice, Intuitive WebUI! **/user settings**
 
 ## Give AlphaGameBot a shot!
-
-<!--
-The AlphaGameBot *Terms of Service* can be found [here](/alphagamebot/terms)
-
-The AlphaGameBot *Privacy Policy* can be found [here](/alphagamebot/privacy)
--->
 
 | Description                  | Join link                                                                                      | Comment                                             |
 |------------------------------ |-----------------------------------------------------------------------------------------------|-----------------------------------------------------|
@@ -43,4 +40,7 @@ Hi, fellow server admin!  I wanted to say that if you are getting spammed by req
       <a href="/alphagamebot/terms">Terms of Service</a> and
       <a href="/alphagamebot/privacy">Privacy Policy</a>.
    </b>
+</p>
+<p align="center">
+    Server admin? See <a href="/alphagamebot/spamming">AlphaGameBot for Server Administrators
 </p>
