@@ -28,8 +28,7 @@ AlphaGameBot is yet another Discord bot.  It was made in Discord.py and designed
 | Future-proof<br>(Administrator)| [Invite as admin](https://discord.com/api/oauth2/authorize?client_id=946533554953809930&permissions=8&scope=bot) | Recommended, but not required.                       |
 | Only permissions<br>it needs  | [Invite the bot!](https://discord.com/api/oauth2/authorize?client_id=946533554953809930&permissions=39859552415312&scope=bot) | You may have to change permissions yourself, as this bot is constantly evolving! |
 
-Nightly builds are available using *AlphaGameBot-Nightly*.  [Invite the bot!](https://discord.com/oauth2/authorize?client_id=1269834974043963403&permissions=1494850219126&integration_type=0&scope=bot%20applications.commands).
-Nightly builds are done every day at 12:00, PST-8:00 (`America/Los_Angeles`) and showcase what I'm currently up to!
+Check out *AlphaGameBot-Nightly* for some new features that I am working on!  [Learn more](/alphagamebot/nightly)!
 
 <!-- Sorry, but I have to explicitly state this :/ -->
 <p align="center">

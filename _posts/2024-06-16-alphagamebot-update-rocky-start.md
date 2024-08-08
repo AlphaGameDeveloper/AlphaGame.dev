@@ -1,5 +1,5 @@
 ---
-title: AlphaGameBot WebUI and Database: A rocky start, and also a GoDaddy rant...
+title: AlphaGameBot WebUI and Database... A rocky start, and also a GoDaddy rant...
 ---
 ## What is AlphaGameBot, exactly?
 AlphaGameBot is a Discord bot that I have been working on since December of this year.  Recently, I have been working
