@@ -4,6 +4,8 @@ permalink: /alphagamebot/nightly
 layout: default
 ---
 
+<img class="profile-picture" src="/assets/images/alphagamebot_nightly_icon.webp" alt="AlphaGameBot-Nightly Icon">
+
 # AlphaGameBot-Nightly
 
 *AlphaGameBot-Nightly* is a seperate Discord bot, using AlphaGameBot's source
