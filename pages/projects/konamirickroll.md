@@ -14,7 +14,7 @@ rickroll when the *"Konami Code"* is entered.
 ## The Konami Code
 The Konami Code, also called the *Contra Code* or *30 Lives code* is a cheat-code found in many Konami video games on the NES.
 
-The code is as follows: **UP, UP, DOWN, DOWN, LEFT, RIGhT, LEFT, RIGHT, B, A**
+The code is as follows: **UP, UP, DOWN, DOWN, LEFT, RIGHT, LEFT, RIGHT, B, A**
 
 ## Try it for yourself!
 KonamiRickroll works on [alphagame.dev](https://alphagame.dev), so you can try it for yourself here.  If you want to embed it in *your*

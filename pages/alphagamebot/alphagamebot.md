@@ -3,6 +3,9 @@ layout: default
 title: AlphaGameBot
 permalink: /alphagamebot/
 ---
+
+<img class="profile-picture" src="/assets/images/alphagamebot_nightly_icon.webp" alt="AlphaGameBot Icon" />
+
 # AlphaGameBot
 AlphaGameBot is yet another Discord bot.  It was made in Discord.py and designed to be a free bot for people to have fun with.  I am not a fan of people making mostly paid Discord bots, and advertising them to be "free" while having most commands locked behind a paywall.
 

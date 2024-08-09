@@ -27,7 +27,7 @@ Currently, we are just using [Caddy][caddy]'s certs and uploading it our [OPNSen
 will (hopefully) no longer be an issue.
 
 Also, we are currently redoing our network (almost) from the ground up so expect some odd stuff with the bot (most will be ok except for
-database-using commands.) I will keep as much uptime s
+database-using commands.) I will keep as much uptime as possible, but expect at lease some downtime.
 
 Cheers,
 - AlphaGameDeveloper
