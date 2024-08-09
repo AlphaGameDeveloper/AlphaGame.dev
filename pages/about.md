@@ -8,6 +8,9 @@ title: "About"
 
 Hi!  My name is Damien, but on the World Wide Web, I usually go by AlphaGameDeveloper.  I run my website, [alphagame.dev](https://alphagame.dev/), and write blog posts in my free time on my [blog](/blog), so you can go check that out!  I have passion for programming, game development, web design, pretty much anything computer-related!  I also do Taekwondo, and am hopefully going to get my black belt in the December of 2024.
 
+## Programming Stats
+Check out my programming stats out [here](/about/stats)!
+
 ## Programming Languages
 * Python (Language of Choice)
 * W3
