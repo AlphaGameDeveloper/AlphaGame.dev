@@ -1,3 +1,8 @@
+---
+layout: post
+title: Jekyll, the New Way to Website?
+---
+{% raw %}
 <!-- wp:paragraph -->
 <p>Static web pages -- We know them, we love them. (Most of us.).  If you have used GitHub pages, some file server like the ones at universities, you've (most likely) used one.<!--more-->  They are great, because they don't use many resources in the backend.  All they really do is regurgitate a file hosted on the server.  They can be great to code individually, not they're not perfect.  <em>Not by a long shot.</em>  Not until Jekyll comes around!</p>
 <!-- /wp:paragraph -->
@@ -53,7 +58,8 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:code -->
-<pre class="wp-block-code"><code>```markdown
+
+```markdown
 ---
 title: My cool webpage
 layout: default
@@ -61,7 +67,8 @@ permalink: /awesome
 ---
 # Hello
 I feel good today!
-</code></pre>
+```
+
 <!-- /wp:code -->
 
 <!-- wp:paragraph -->
@@ -185,3 +192,4 @@ I feel good today!
 <li><a href="https://shopify.github.io/liquid/">Liquid</a></li>
 <!-- /wp:list-item --></ul>
 <!-- /wp:list -->
+{% endraw %}
