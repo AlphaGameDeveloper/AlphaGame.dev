@@ -52,6 +52,22 @@ function closeMessage() {
         {{ site.data.message.message }}
     </p>
 </div>
+
+<script>
+    // remove site-message if requested
+    window.addEventListener("DOMContentLoaded", function() {
+        console.log("RemoveMessage OK");
+
+        let ckie = getCookie("messageClosed");
+        console.log(ckie)
+
+        if (ckie == true || ckie == "true") {
+            let e = document.getElementById("site-message");
+
+            e.style.display = "none";
+        }
+    }, false);
+</script>
 {% else %}
 <!-- there was no message in this website build, so it was excluded.
 CURRENT DATA: 
