@@ -9,7 +9,7 @@
     {% else %}
     <!-- This page had no page.modified, so that section was excluded from the website build. -->
     {% endif %}
-    <small>Site last updated: <b>{{ site.time }}</b></small>
+    <small>The site was last updated on: <b>{{ site.time | date: "%m/%d/%Y" }}</b></small>
     </p>
     <p style="text-align: center; margin-bottom: 10px;">
         <a href="/license" style="color: black; font-size: 8pt;"><small>This site (and it's content) is licensed under the terms of the <i>{{ site.license }}</i> license.  Click here for more information.</small></a>
