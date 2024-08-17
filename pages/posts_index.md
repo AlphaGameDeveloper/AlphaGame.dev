@@ -25,6 +25,7 @@ Here, you can find my blog posts that I write in my spare time.
 
 For you awesome people who use [RSS](https://en.wikipedia.org/wiki/RSS), the feed can be found [here](https://alphagame.dev/feed.xml)!
 
+The Blog Archives can be found [here](/blog/archives)!
 
 <table>
     <tr>
