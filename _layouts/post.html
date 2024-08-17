@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
     {% include metadata.html %}
     {% include head.html %}
     {% include gtag.html %}
 </head>
+
 <body>
     <div class="wrapper">
         <div class="navbar container">
             {% if site.ins_logo %}
-                <img id="ins-logo" src="{{ site.ins_logo }}" />
+            <img id="ins-logo" src="{{ site.ins_logo }}" />
             {% endif %}
             <a id="author-name" class="alignable pull-left" href="{{ site.url }}{{ site.baseurl }}">{{ site.title }}</a>
             <ul id="navlist" class="alignable pull-right navbar-ul">
                 {% for x in site.nav %}
-                    {% if x.name == "Resume" %}
-                        <li class="alignable pull-left nav-list"><a target="_blank" href="{{ x.link }}">{{ x.name }}</a>
+                {% if x.name == "Resume" %}
+                <li class="alignable pull-left nav-list"><a target="_blank" href="{{ x.link }}">{{ x.name }}</a>
                     {% else %}
-                        <li class="alignable pull-left nav-list"><a href="{{ x.link }}">{{ x.name }}</a>
+                <li class="alignable pull-left nav-list"><a href="{{ x.link }}">{{ x.name }}</a>
                     {% endif %}
                     {% if forloop.last == false %}
-                        /
+                    /
                     {% endif %}
-                        </li>
+                </li>
                 {% endfor %}
             </ul>
             {% include message.html %}
@@ -31,16 +33,19 @@
         <div style="clear:both"></div>
         <hr>
         {% if page.is_contact == true %}
-            <div class="container content contact">
-        {% else %}
+        <div class="container content contact">
+            {% else %}
             <div class="container content">
-        {% endif %}
+                {% endif %}
                 <h1>{{ page.title }}</h1>
                 {{ content }}
+                <hr />
                 {% include isso.html %}
                 {% include footer.html %}
                 {% include noscript.html %}
             </div>
-    </div>
-    <script src="/assets/js/externalLink.js"></script>
+        </div>
+        <script src="/assets/js/externalLink.js"></script>
 </body>
+
+</html>
