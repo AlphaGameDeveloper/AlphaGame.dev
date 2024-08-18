@@ -1,0 +1,16 @@
+{
+    "image": "mcr.microsoft.com/devcontainers/jekyll:2-bullseye",
+    "forwardPorts": [
+        "4000:4000" // jekyll default
+    ],
+    // "containerUser": "root",
+    "postCreateCommand": "bundler install",
+    "name": "Jekyll Development Container",
+	"customizations": {
+        "extensions": [
+            "dbaeumer.vscode-eslint",
+            "ms-vscode.live-server",
+            "shopify.ruby-lsp"
+        ]
+    }
+} 
