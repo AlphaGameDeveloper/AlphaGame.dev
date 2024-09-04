@@ -21,6 +21,9 @@ footer_text: "Website copyright &copy; Damien Boisvert (AlphaGameDeveloper) 2024
 
 license: "Creative Commons Attribution 4.0 International"
 
+isso: https://isso.alphagame.dev
+comments: true
+
 keywords:
   - damien
   - boisvert
