@@ -19,29 +19,4 @@
   // NOTE: if someone knows a problem that I did, 
   // please let me know lol. ;)
 </script>
-<!-- track clicked links -->
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // Function to track link clicks
-    function trackLinkClick(event) {
-      console.log("trackLinkClick called");
-        // Check if Google Analytics is loaded
-        if (typeof ga === 'function') {
-            // Send a pageview event to Google Analytics
-            ga('send', 'event', {
-                eventCategory: 'Outbound Link',
-                eventAction: 'click',
-                eventLabel: event.target.href,
-                transport: 'beacon'
-            });
-        }
-    }
-    
-    // Add click event listener to all <a> elements
-    var links = document.querySelectorAll('a');
-    links.forEach(function(link) {
-        link.addEventListener('click', trackLinkClick);
-    });
-});
-</script>
 <!-- END TEMPLATE gtag.html -->
