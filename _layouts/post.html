@@ -38,6 +38,19 @@
             <div class="container content">
                 {% endif %}
                 <h1>{{ page.title }}</h1>
+                <p class="post-meta">
+                    {% if page.author %}
+                        {% assign author = site.data.authors[page.author] %}
+                    {% else %}
+                        {% assign author = site.data.authors[site.author] %}
+                    {% endif %}
+
+                    <a href="/about">{{ page.author }}</a>
+                    <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time>
+                    • <a href="{{ author.about_url }}">{{ author.name }}</a>
+                    {% if page.tags %}
+                    {% endif %}
+                <hr />
                 {{ content }}
                 <hr />
                 {% include isso.html %}
