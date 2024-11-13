@@ -13,6 +13,9 @@ I am a member of FRC team 2551, [Penguin Empire Robotics](https://www.penguinemp
 ## Programming Stats
 Check out my programming stats out [here](/about/stats)!
 
+## GPG Key
+My GPG Key can be found [here](/gpg)!
+
 ## Programming Languages
 * Python (Language of Choice)
 * Java (Currently Learning)

@@ -9,7 +9,7 @@ title: Home
 # AlphaGameDeveloper
 
 ## Hi, I'm Damien.
-My name is Damien Boisvert, but I am more commonly known on the Internet as AlphaGameDeveloper, or AlphaGameDev.  I am 15 years old, and have a passion for computers, programming, and networking.  I am a contributor to open-source software on my [GitHub][github].
+My name is Damien Boisvert, but I am more commonly known on the Internet as AlphaGameDeveloper, or AlphaGameDev.  I am 15 years old, and have a passion for computers, programming, and networking.  I am a contributor to open-source software on my [GitHub][github].  If you want it, here's my [GPG key](/gpg)!
 
 I am in 10<sup>th</sup> grade, and am currently working on getting my Cisco certifications.  I also write on my [blog](/blog) in my spare time, and also work on my Discord bot, [AlphaGameBot](/alphagamebot/). ([Learn more!](/about/))
 
