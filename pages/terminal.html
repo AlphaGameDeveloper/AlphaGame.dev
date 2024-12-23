@@ -1,0 +1,89 @@
+---
+permalink: /terminal.html
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xterm/css/xterm.css" />
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000;
+        }
+        #terminal {
+            width: 80%;
+            height: 80%;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div id="terminal"></div>
+    <script src="https://cdn.jsdelivr.net/npm/xterm/lib/xterm.js"></script>
+    <script>
+        const delay = 50;
+        const term = new Terminal();
+        var paused = false;
+        term.open(document.getElementById('terminal'));
+
+        fetch('/assets/term_text.txt')
+            .then(response => {
+                if (!response.ok) {
+                    if (response.status === 404) {
+                        throw new Error('404: File not found');
+                    } else {
+                        throw new Error('Error fetching the text file');
+                    }
+                }
+                return response.text();
+            })
+            .then(text => {
+                let index = 0;
+
+                function typeEffect() {
+                    if (index < text.length) {
+                        if (text.substring(index, index + 7) === '<pause>') {
+                            term.write('\r\n-- PRESS ENTER TO CONTINUE --');
+                            paused = true;
+                            term.onKey(function onKeyPress(event) {
+                                if (!paused) {
+                                    console.log('Ignoring key press.  Not paused.');
+                                    return;
+                                }
+                                console.log(event);
+                                if (event.key === '\r') {
+                                    paused = false;
+                                    term.write('\u001b[2K\r'); // Clear the line
+                                    index += 7; // Skip the <pause> tag
+                                    term.focus(); // Focus the terminal
+                                    setTimeout(typeEffect, delay);
+                                }
+                            });
+                        } else {
+                            if (text.charAt(index) === '\n') {
+                                term.write('\r\n');
+                            } else {
+                                term.write(text.charAt(index));
+                            }
+                            index++;
+                            setTimeout(typeEffect, delay);
+                        }
+                    }
+                }
+
+                typeEffect();
+            })
+            .catch(error => {
+                term.write(error.message);
+                console.error('Error:', error);
+            });
+    </script>
+</body>
+</html>
