@@ -68,11 +68,5 @@ function closeMessage() {
         }
     }, false);
 </script>
-{% else %}
-<!-- there was no message in this website build, so it was excluded.
-CURRENT DATA: 
-type: "{{ site.data.message.type }}", 
-enabled: "{{ site.data.message.enabled }}",
-message: {{ site.data.message.message }} -->
 {% endif %}
 <!-- END TEMPLATE message.html -->
