@@ -21,26 +21,27 @@
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
 */
-var p = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight", "b", "a"], c = 0, k = function (e) {
-    if (0 > p.indexOf(e.key) || e.key !== p[c]) {
-      c = 0;
+var pattern = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight", "b", "a"];
+inputSequenceIndex = 0;
+document.addEventListener("keydown", function (event) {
+    if (0 > pattern.indexOf(event.key) || event.key !== pattern[inputSequenceIndex]) {
+      inputSequenceIndex = 0;
       return;
     }
-    if (c++, p.length === c) {
-      c = 0;
-      let v = document.createElement("video");
-      v.setAttribute("autoplay", true);
-      let s = document.createElement("source");
-      s.setAttribute("src", "https://archive.org/download/Rick_Astley_Never_Gonna_Give_You_Up/Rick_Astley_Never_Gonna_Give_You_Up.mp4");
-      s.setAttribute("type", "video/mp4");
-      v.appendChild(s);
-      document.body.appendChild(v);
-      v.style.position = "fixed";
-      v.style.top = "50%";
-      v.style.left = "50%";
-      v.style.transform = "translate(-50%, -50%)";
-      v.style.width = "100%";
+    if (inputSequenceIndex++, pattern.length === inputSequenceIndex) {
+      inputSequenceIndex = 0;
+      let video = document.createElement("video");
+      video.setAttribute("autoplay", true);
+      let videoSource = document.createElement("source");
+      videoSource.setAttribute("src", "https://archive.org/download/Rick_Astley_Never_Gonna_Give_You_Up/Rick_Astley_Never_Gonna_Give_You_Up.mp4");
+      videoSource.setAttribute("type", "video/mp4");
+      video.appendChild(videoSource);
+      document.body.appendChild(video);
+      video.style.position = "fixed";
+      video.style.top = "50%";
+      video.style.left = "50%";
+      video.style.transform = "translate(-50%, -50%)";
+      video.style.width = "100%";
     }
-  };
-  document.addEventListener("keydown", k, false);
-  
+}, false);
+console.log("KonamiRickroll Loaded")
