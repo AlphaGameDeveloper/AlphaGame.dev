@@ -31,7 +31,7 @@ My GPG Key can be found [here](/gpg)!
 * Jinja2
 
 ## MBTI, Alignment, and Annegram
-For all you MBTI nerds (You're in good company!  I am also a MBTI nerd), I am a [ENTP Personality Type][entp-personality], also called *"The Debater"*.  My alignment is [Chaotic Neutral][chaotic-neutral]. and my annegram is 7w8. 
+For all you MBTI nerds (You're in good company!  I am also a MBTI nerd), I am a [ENTP Personality Type][entp-personality], also called *"The Debater"*.  My alignment is [Chaotic Neutral][chaotic-neutral]. My enneagram type is 7w8.  My instinctual variant is so/sx.
 
 [entp-personality]: https://16personalities.com/entp-personality
 [chaotic-neutral]: https://easydamus.com/chaoticneutral.html
