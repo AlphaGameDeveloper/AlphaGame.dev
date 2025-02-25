@@ -3,13 +3,27 @@ layout: default
 permalink: /projects/
 title: Projects
 ---
-<p align="center" style="font-weight: bold; text-decoration: underline;">If you are looking for my MBTI research, it can be found <a href="/mbti/">here</a>!</p>
 
 # Projects
-Here are some projects I make in my spare time.  Feel free to check them out!  
+These are some projects I work on, in my spare time.
 
-* [AlphaOS](/projects/alphaos) - Linux Distro made in Python!
-* [DISC to MBTI Converter](/mbti/disc-to-mbti-converter) - Convert your DISC scores to MBTI!
-* [KonamiRickroll](/projects/konamirickroll) - Add a rickroll to your website via the Konami code
+## AlphaGameBot [![Build Status](https://jenkins.alphagame.dev/buildStatus/icon?job=AlphaGameBot+Production)](http://jenkins.alphagame.dev/job/AlphaGameBot%20Production/)
+* Maintained? ✅
 
-*All these projects unless stated otherwise are licensed under [MIT](https://choosealicense.com/licenses/mit/).*
+A general-purpose Discord bot, made for having fun.  [GitHub](https://github.com/AlphaGameBot/AlphaGameBot)
+
+## AlphaGameBot WebUI [![Build Status](https://jenkins.alphagame.dev/buildStatus/icon?job=AlphaGameBot+WebUI%2Fmaster)](http://jenkins.alphagame.dev/job/AlphaGameBot%20WebUI/job/master/)
+* Maintained? ✅
+
+WebUI for AlphaGameBot.  Accessable at [alphagamebot.alphagame.dev](https://alphagamebot.alphagame.dev/)!  [GitHub](https://github.com/AlphaGameBot/WebUI)
+
+## OwOFetch [![Build Status](https://jenkins.alphagame.dev/buildStatus/icon?job=OwOFetch)](http://jenkins.alphagame.dev/job/OwOFetch/)
+* Maintained? ✅
+
+Stupid system information tool based on UwUFetch.  Download on [GitHub](https://github.com/AlphaGameDeveloper/OwOFetch/releases) or [releases.alphagame.dev](https://releases.alphagame.dev/OwOFetch).
+
+## AlphaOS
+* Maintained? 🚧
+  * Not able to work on this as much.  Not orphaned, but not recieving updates much either.
+
+Linux distro written in Python, with its own shell, and registry/configuration system. [GitHub](https://github.com/AlphaGameDeveloper/AlphaOS)
