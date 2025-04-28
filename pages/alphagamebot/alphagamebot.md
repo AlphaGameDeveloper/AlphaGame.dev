@@ -25,11 +25,7 @@ AlphaGameBot is yet another Discord bot.  It was made in Discord.py and designed
 * Nice, Intuitive WebUI! **/user settings**
 
 ## Give AlphaGameBot a shot!
-
-| Description                  | Join link                                                                                      | Comment                                             |
-|------------------------------ |-----------------------------------------------------------------------------------------------|-----------------------------------------------------|
-| Future-proof<br>(Administrator)| [Invite as admin](https://discord.com/api/oauth2/authorize?client_id=946533554953809930&permissions=8&scope=bot) | Recommended, but not required.                       |
-| Only permissions<br>it needs  | [Invite the bot!](https://discord.com/api/oauth2/authorize?client_id=946533554953809930&permissions=39859552415312&scope=bot) | You may have to change permissions yourself, as this bot is constantly evolving! |
+[Click here to invite the bot!](https://discord.com/oauth2/authorize?client_id=946533554953809930)
 
 Check out *AlphaGameBot-Nightly* for some new features that I am working on!  [Learn more](/alphagamebot/nightly)!
 
