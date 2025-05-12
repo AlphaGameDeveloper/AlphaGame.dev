@@ -1,0 +1,1091 @@
+---
+title: send help please
+permalink: /help
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send Help Please</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xterm@5.1.0/css/xterm.css" />
+    <script src="https://cdn.jsdelivr.net/npm/xterm@5.1.0/lib/xterm.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/xterm-addon-fit@0.7.0/lib/xterm-addon-fit.js"></script>
+    <style>
+        * { overflow: hidden; overflow-y: hidden; }
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: monospace;
+            overflow: hidden;
+        }
+        #terminal-container {
+            overflow: hidden;
+            width: 80%;
+            height: 80%;
+            position: relative;
+        }
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10;
+        }
+        .crack {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(45deg);
+            z-index: 5;
+        }
+        .start-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 10px 20px;
+            background-color: rgba(0, 255, 0, 0.2);
+            color: #0f0;
+            border: 1px solid #0f0;
+            cursor: pointer;
+            z-index: 20;
+            font-family: monospace;
+            font-size: 18px;
+        }
+        .restart-button {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            padding: 5px 10px;
+            background-color: rgba(0, 255, 0, 0.2);
+            color: #0f0;
+            border: 1px solid #0f0;
+            cursor: pointer;
+            z-index: 20;
+            font-family: monospace;
+            font-size: 14px;
+            display: none;
+        }
+        .timing-tool-button {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            padding: 5px 10px;
+            background-color: rgba(0, 255, 0, 0.2);
+            color: #0f0;
+            border: 1px solid #0f0;
+            cursor: pointer;
+            z-index: 20;
+            font-family: monospace;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div id="terminal-container">
+        <div class="overlay" id="overlay"></div>
+        <button id="start-button" class="start-button">Start Experience</button>
+        <button id="restart-button" class="restart-button">Restart</button>
+        <button id="timing-tool-button" class="timing-tool-button">Timing Tool</button>
+    </div>
+    
+    <!-- Add hidden audio element -->
+    <audio id="background-audio" preload="auto">
+        <!-- Replace with your actual audio file path -->
+        <source src="/assets/sendhelpplease.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        // Initialize terminal
+        const term = new Terminal({
+            cursorBlink: true,
+            fontFamily: 'monospace',
+            fontSize: 18,
+            theme: {
+                background: '#000',
+                foreground: '#0f0',
+                cursor: '#0f0'
+            }
+        });
+
+        // Use FitAddon to make terminal responsive
+        const fitAddon = new FitAddon.FitAddon();
+        term.loadAddon(fitAddon);
+        term.open(document.getElementById('terminal-container'));
+        fitAddon.fit();
+        
+        // Handle window resize
+        window.addEventListener('resize', () => fitAddon.fit());
+
+        // Tool to time lyrics with audio
+        const lyricTexts = [
+            "my battery is getting low.",
+            "and it'll soon my time to go",
+            "the screen is cracked and i can't see,",
+            "But i just hope you are listening",
+            "",
+            "to my little rhymes that i made for you",
+            "somebody out there that cannot hear my t-t-tunes",
+            "it was too soon.",
+            "where am i now?",
+            "looking up at the moon,",
+            "",
+            "It's OK I've had my fair shares of days",
+            "where i cant stare away,",
+            "but that's alright,",
+            "i guess this was the end of my night",
+            "",
+            "my battery is getting l-low",
+            "It'll soon be my time to g-g-g-g-go",
+            "the screen is cracked and i cant see,",
+            "but i just hope your listening-g-g.",
+            "",
+            "system shutting down",
+            "",
+            "i look down at the ground",
+            "where am i heading off-f-f to now-now-now?",
+            "they left me here, collecting dusts,",
+            "now my dust has turned into rust",
+            "t-t-t-time is infinite-e-e,",
+            "But is it so?",
+            "Cause it will still keep going,",
+            "Then after, my screen says 'system shutting down'",
+            "",
+            "my battery is getting low.",
+            "it'll soon be my time to go,",
+            "The screen is cracked and i cant see,",
+            "but i just hope your listening.",
+            "",
+            "my battery is getting low.",
+            "and it'll soon my time to go,",
+            "the screen is cracked and i cant see,",
+            "but i just hope you are listening..",
+            "",
+            "i've had my fair share of days",
+            "Where I cant stare away,",
+            "but thats alright",
+            "i guess this was the end of my night",
+            "",
+            "shuts down"
+        ];
+
+        // Timing tool data
+        let timingMode = false;
+        let currentLyricIndex = 0;
+        let timingStartTime = 0;
+        let lyricTimings = [];
+        
+        // Add debounce control for Enter key
+        let lastEnterKeyTime = 0;
+        const DEBOUNCE_TIME = 500; // Minimum milliseconds between Enter key registrations
+        
+        // Debounced process Enter key function
+        function debouncedProcessEnterKey() {
+            const now = Date.now();
+            if (now - lastEnterKeyTime < DEBOUNCE_TIME) {
+                console.log(`Debounced: Ignoring Enter key (last press: ${now - lastEnterKeyTime}ms ago)`);
+                return;
+            }
+            
+            lastEnterKeyTime = now;
+            processEnterKey();
+        }
+        
+        // Function to start timing tool
+        function startTimingTool() {
+            console.log("Starting timing tool");
+            timingMode = true;
+            currentLyricIndex = 0;
+            lyricTimings = [];
+            
+            // Hide UI buttons
+            document.getElementById('start-button').style.display = 'none';
+            document.getElementById('restart-button').style.display = 'none';
+            document.getElementById('timing-tool-button').style.display = 'none';
+            
+            // Clear terminal
+            term.clear();
+            term.write('\x1b[?25l'); // Hide cursor
+            
+            term.write('\r\n\x1b[36m===== LYRIC TIMING TOOL =====\x1b[0m\r\n\r\n');
+            term.write('Instructions:\r\n');
+            term.write('1. Press ENTER when you hear each lyric start\r\n');
+            term.write('2. The audio will play and you\'ll see the current lyric\r\n');
+            term.write('3. When finished, the timed lyrics will be displayed for copy/paste\r\n\r\n');
+            term.write('Press ENTER to start timing or ESC to cancel\r\n');
+            
+            // Clean up any existing listeners
+            document.removeEventListener('keydown', handleTimingKeydown);
+            
+            // Add terminal key handler
+            term.onKey(handleTerminalKey);
+            
+            // Also add document level handler as backup
+            document.addEventListener('keydown', handleTimingKeydown);
+            
+            console.log("Event listeners attached");
+        }
+        
+        // Update the terminal key handler to use debounce
+        function handleTerminalKey(event) {
+            console.log(`Terminal key event: ${JSON.stringify(event)}`);
+            
+            // Check if Enter key (key code 13)
+            if (event.domEvent.keyCode === 13) {
+                console.log("ENTER key detected in terminal");
+                debouncedProcessEnterKey();
+            }
+            
+            // Check if Escape key (key code 27)
+            if (event.domEvent.keyCode === 27) {
+                console.log("ESC key detected in terminal");
+                cancelTimingTool();
+            }
+        }
+        
+        // Reordering functions to fix reference error
+        // Start the audio and timing - defined before it's called
+        function startTimingAudio() {
+            console.log("Starting audio playback for timing");
+            const audio = document.getElementById('background-audio');
+            
+            timingStartTime = Date.now();
+            console.log(`Timing start time set: ${timingStartTime}`);
+            
+            term.clear();
+            term.write('\x1b[36mTIMING IN PROGRESS...\x1b[0m\r\n\r\n');
+            term.write('Press ENTER when you hear each lyric start\r\n\r\n');
+            
+            // Show first lyric
+            console.log(`Displaying first lyric: "${lyricTexts[currentLyricIndex]}"`);
+            term.write('\x1b[33mCURRENT LYRIC:\x1b[0m ' + lyricTexts[currentLyricIndex] + '\r\n');
+        }
+
+        // Process Enter key press
+        let enterKeyDebounce = false;
+        function processEnterKey() {
+            console.log("Enhanced processEnterKey called");
+            
+            if (enterKeyDebounce) {
+                console.log("Enter key debounce active, ignoring press");
+                return;
+            }
+            
+            enterKeyDebounce = true;
+            setTimeout(() => enterKeyDebounce = false, 300); // Debounce for 300ms
+            
+            if (!timingMode) {
+                console.log("Not in timing mode, ignoring Enter");
+                return;
+            }
+            
+            // Check if timing has already started
+            if (timingStartTime > 0) {
+                console.log("Timing is in progress, recording lyric");
+                
+                // Record time for current lyric
+                const currentTime = Date.now() - timingStartTime;
+                console.log(`Recording time for lyric "${lyricTexts[currentLyricIndex]}": ${currentTime}ms`);
+                
+                lyricTimings.push({
+                    text: lyricTexts[currentLyricIndex],
+                    time: currentTime
+                });
+                
+                term.write(`\r\n\x1b[32mRecorded @ ${currentTime}ms\x1b[0m\r\n`);
+                
+                // Move to next lyric
+                currentLyricIndex++;
+                console.log(`Advanced to next lyric index: ${currentLyricIndex}`);
+                
+                // If we've timed all lyrics, finish
+                if (currentLyricIndex >= lyricTexts.length) {
+                    console.log("All lyrics timed, finishing");
+                    finishTimingTool();
+                    return;
+                }
+                
+                // Show next lyric
+                console.log(`Displaying next lyric: "${lyricTexts[currentLyricIndex]}"`);
+                term.write('\r\n\x1b[33mNEXT LYRIC:\x1b[0m ' + lyricTexts[currentLyricIndex] + '\r\n');
+                return;
+            }
+            
+            // Otherwise, call the original function to start the audio
+            const audio = document.getElementById('background-audio');
+            console.log("Starting audio playback");
+            
+            // Try to force audio to play with user interaction
+            audio.currentTime = 0;
+            audio.muted = false;
+            audio.volume = 1;
+            
+            try {
+                // Use different play methods to improve compatibility
+                audio.play().then(() => {
+                    console.log("Audio started successfully");
+                    startTimingAudio();
+                }).catch(err => {
+                    console.error("Audio play failed:", err);
+                    // Try again with a direct call
+                    setTimeout(() => {
+                        try {
+                            audio.play();
+                        } catch (e) {
+                            console.error("Second play attempt failed:", e);
+                        }
+                        startTimingAudio();
+                    }, 100);
+                });
+            } catch (e) {
+                console.error("Error playing audio:", e);
+                // Still continue with timing
+                startTimingAudio();
+            }
+        }
+
+        // Handle keydown during timing
+        function handleTimingKeydown(event) {
+            console.log(`Key pressed: ${event.key}, keyCode: ${event.keyCode}, timing mode: ${timingMode}`);
+            
+            // Make sure we're in timing mode
+            if (!timingMode) {
+                console.log("Not in timing mode, ignoring keypress");
+                return;
+            }
+            
+            // Prevent default behavior (like page scrolling)
+            event.preventDefault();
+            event.stopPropagation();
+            
+            // If ESC pressed, cancel timing
+            if (event.key === 'Escape' || event.keyCode === 27) {
+                console.log("ESC pressed, cancelling timing tool");
+                cancelTimingTool();
+                return;
+            }
+            
+            // If Enter key, use debounced handler
+            if (event.key === 'Enter' || event.keyCode === 13) {
+                console.log("ENTER key detected in document");
+                debouncedProcessEnterKey();
+            }
+        }
+        
+        // Cancel timing tool
+        function cancelTimingTool() {
+            console.log("Cancelling timing tool");
+            document.removeEventListener('keydown', handleTimingKeydown);
+            term.onKey(() => {}); // Remove terminal key handler
+            timingMode = false;
+            
+            // Stop audio
+            const audio = document.getElementById('background-audio');
+            audio.pause();
+            console.log("Audio paused");
+            
+            // Show UI buttons
+            document.getElementById('start-button').style.display = 'block';
+            document.getElementById('timing-tool-button').style.display = 'block';
+            
+            // Clear terminal
+            term.clear();
+            term.write('\r\nTiming cancelled\r\n');
+            
+            // Clean up hidden input
+            if (window.hiddenInput) {
+                window.hiddenInput.remove();
+                window.hiddenInput = null;
+            }
+        }
+        
+        // Finish timing tool and display results
+        function finishTimingTool() {
+            console.log("Finishing timing tool");
+            document.removeEventListener('keydown', handleTimingKeydown);
+            term.onKey(() => {}); // Remove terminal key handler
+            timingMode = false;
+            
+            // Stop audio
+            const audio = document.getElementById('background-audio');
+            audio.pause();
+            console.log("Audio paused");
+            
+            // Show UI buttons
+            document.getElementById('restart-button').style.display = 'block';
+            document.getElementById('timing-tool-button').style.display = 'block';
+            
+            // Clear terminal and show results
+            term.clear();
+            term.write('\r\n\x1b[36m===== TIMING COMPLETE =====\x1b[0m\r\n\r\n');
+            term.write('Copy the following timed lyrics code:\r\n\r\n');
+            
+            // Format lyrics with timing in proper JavaScript format
+            let formattedLyrics = 'const lyrics = [\r\n';
+            
+            lyricTimings.forEach((lyric, index) => {
+                formattedLyrics += `    { text: "${lyric.text}", time: ${lyric.time} }`;
+                if (index < lyricTimings.length - 1) {
+                    formattedLyrics += ',';
+                }
+                formattedLyrics += '\r\n';
+            });
+            
+            formattedLyrics += '];\r\n';
+            
+            console.log("Generated formatted lyrics:");
+            console.log(lyricTimings);
+            term.write(formattedLyrics);
+            term.write('\r\n\x1b[32mTiming complete! Copy the code above to use in your project.\x1b[0m\r\n');
+            term.write('\r\nPress the Restart button to return to the main interface.\r\n');
+            
+            // Clean up hidden input
+            if (window.hiddenInput) {
+                window.hiddenInput.remove();
+                window.hiddenInput = null;
+            }
+        }
+
+        // Lyrics with timing in milliseconds
+        
+        const lyrics = [
+    {
+        "text": "my battery is getting low.",
+        "time": 3975
+    },
+    {
+        "text": "and it'll soon my time to go",
+        "time": 6871
+    },
+    {
+        "text": "the screen is cracked and i can't see,",
+        "time": 9751
+    },
+    {
+        "text": "But i just hope you are listening",
+        "time": 12246
+    },
+    {
+        "text": "",
+        "time": 14870
+    },
+    {
+        "text": "to my little rhymes that i made for you",
+        "time": 15846
+    },
+    {
+        "text": "somebody out there that cannot hear my t-t-tunes",
+        "time": 21438
+    },
+    {
+        "text": "it was too soon.",
+        "time": 28222
+    },
+    {
+        "text": "where am i now?",
+        "time": 31214
+    },
+    {
+        "text": "looking up at the moon,",
+        "time": 34157
+    },
+    {
+        "text": "",
+        "time": 36870
+    },
+    {
+        "text": "It's OK I've had my fair shares of days",
+        "time": 37485
+    },
+    {
+        "text": "where i cant stare away,",
+        "time": 42669
+    },
+    {
+        "text": "but that's alright,",
+        "time": 45845
+    },
+    {
+        "text": "i guess this was the end of my night",
+        "time": 48813
+    },
+    {
+        "text": "",
+        "time": 52213
+    },
+    {
+        "text": "my battery is getting l-low",
+        "time": 52829
+    },
+    {
+        "text": "It'll soon be my time to g-g-g-g-go",
+        "time": 55628
+    },
+    {
+        "text": "the screen is cracked and i cant see,",
+        "time": 59077
+    },
+    {
+        "text": "but i just hope your listening-g-g.",
+        "time": 62684
+    },
+    {
+        "text": "",
+        "time": 64252
+    },
+    {
+        "text": "system shutting down",
+        "time": 65332
+    },
+    {
+        "text": "",
+        "time": 67092
+    },
+    {
+        "text": "i look down at the ground",
+        "time": 67956
+    },
+    {
+        "text": "where am i heading off-f-f to now-now-now?",
+        "time": 70828
+    },
+    {
+        "text": "they left me here, collecting dusts,",
+        "time": 77107
+    },
+    {
+        "text": "now my dust has turned into rust",
+        "time": 82051
+    },
+    {
+        "text": "t-t-t-time is infinite-e-e,",
+        "time": 87051
+    },
+    {
+        "text": "But is it so?",
+        "time": 92650
+    },
+    {
+        "text": "Cause it will still keep going,",
+        "time": 95242
+    },
+    {
+        "text": "Then after, my screen says 'system shutting down'",
+        "time": 97786
+    },
+    {
+        "text": "",
+        "time": 100402
+    },
+    {
+        "text": "my battery is getting low.",
+        "time": 101578
+    },
+    {
+        "text": "it'll soon be my time to go,",
+        "time": 104578
+    },
+    {
+        "text": "The screen is cracked and i cant see,",
+        "time": 107170
+    },
+    {
+        "text": "but i just hope your listening.",
+        "time": 109961
+    },
+    {
+        "text": "",
+        "time": 111561
+    },
+    {
+        "text": "my battery is getting low.",
+        "time": 113065
+    },
+    {
+        "text": "and it'll soon my time to go,",
+        "time": 117017
+    },
+    {
+        "text": "the screen is cracked and i cant see,",
+        "time": 119745
+    },
+    {
+        "text": "but i just hope you are listening..",
+        "time": 122184
+    },
+    {
+        "text": "",
+        "time": 123936
+    },
+    {
+        "text": "i've had my fair share of days",
+        "time": 126552
+    },
+    {
+        "text": "Where I cant stare away,",
+        "time": 129216
+    },
+    {
+        "text": "but thats alright",
+        "time": 132280
+    },
+    {
+        "text": "i guess this was the end of my night",
+        "time": 134432
+    },
+    {
+        "text": "",
+        "time": 136280
+    },
+    {
+        "text": "shuts down",
+        "time": 138999
+    }
+];
+
+        // Create a visual crack effect
+        function createCrack() {
+            const overlay = document.getElementById('overlay');
+            const crack = document.createElement('div');
+            crack.className = 'crack';
+            
+            const startX = Math.random() * 100;
+            const startY = Math.random() * 100;
+            const width = 1 + Math.random() * 2;
+            const length = 10 + Math.random() * 50;
+            
+            crack.style.width = `${width}px`;
+            crack.style.height = `${length}px`;
+            crack.style.left = `${startX}%`;
+            crack.style.top = `${startY}%`;
+            
+            overlay.appendChild(crack);
+        }
+
+        // Create a lock mechanism to handle concurrent typing
+        let typingLock = false;
+        let pendingText = null;
+        
+        // Calculate adaptive typing speed based on available time and text length
+        function calculateAdaptiveSpeed(text, baseSpeed, timeAvailable = null) {
+            // Default speed if no time constraint
+            if (!timeAvailable) return baseSpeed;
+            
+            // Calculate minimum time needed (ms) based on text length
+            const minTimeNeeded = text.length * 15; // At least 15ms per character
+            
+            // Available time (excluding glitch effects and delays)
+            const effectiveTimeAvailable = timeAvailable * 0.7; // Allow 30% buffer for glitches/delays
+            
+            if (effectiveTimeAvailable <= minTimeNeeded) {
+                // Not enough time, use minimum speed
+                console.log(`Adaptive speed: Using minimum typing speed for "${text.substring(0, 20)}..."`);
+                return 5; // Very fast typing
+            }
+            
+            // Calculate adaptive speed: lower is faster
+            const adaptiveSpeed = effectiveTimeAvailable / text.length;
+            
+            // Cap the speed between reasonable bounds
+            const finalSpeed = Math.max(5, Math.min(baseSpeed, adaptiveSpeed));
+            console.log(`Adaptive speed: ${finalSpeed}ms per char for "${text.substring(0, 20)}..." (${text.length} chars in ${timeAvailable}ms)`);
+            
+            return finalSpeed;
+        }
+
+        // Modified typeText to support the lock mechanism
+        async function typeText(text, speed = 50, glitchy = false, timeAvailable = null) {
+            // Calculate adaptive speed if timeAvailable is specified
+            if (timeAvailable) {
+                speed = calculateAdaptiveSpeed(text, speed, timeAvailable);
+            }
+            
+            // If there's already typing in progress
+            if (typingLock) {
+                console.log("Typing lock active, completing previous text instantly");
+                // Set the pending text to be processed after current typing completes
+                pendingText = { text, speed, glitchy, timeAvailable };
+                return;
+            }
+            
+            typingLock = true;
+            
+            try {
+                // Keep track of current line for proper error display
+                let currentLine = "";
+                let i = 0;
+                
+                // Check if we should type normally or just output instantly
+                if (pendingText) {
+                    console.log("Outputting instantly due to pending text");
+                    term.write(text + '\r\n');
+                    console.log(`Instantly typed text: "${text}"`);
+                } else {
+                    // Track timing to ensure we stay within timeAvailable if specified
+                    const startTime = Date.now();
+                    const endTime = timeAvailable ? (startTime + timeAvailable) : Infinity;
+                    
+                    for (i = 0; i < text.length; i++) {
+                        // Check if we're running out of time
+                        if (timeAvailable && Date.now() + (text.length - i) * 5 > endTime) {
+                            console.log("Running out of time, completing instantly");
+                            term.write(text.substring(i) + '\r\n');
+                            break;
+                        }
+                        
+                        // Check if a new typing task is pending
+                        if (pendingText) {
+                            console.log("New text pending, completing current instantly");
+                            // Output remaining text instantly
+                            term.write(text.substring(i) + '\r\n');
+                            break;
+                        }
+                        
+                        // Glitchy typing for later parts of the song
+                        if (glitchy && Math.random() < 0.1) {
+                            const char = text[i];
+                            term.write(char);
+                            currentLine += char;
+                            await new Promise(r => setTimeout(r, speed));
+                            term.write('\b');
+                            await new Promise(r => setTimeout(r, speed * 2));
+                            term.write(char);
+                        } else {
+                            term.write(text[i]);
+                            currentLine += text[i];
+                        }
+                        
+                        // Variable typing speed
+                        const delay = speed * (0.5 + Math.random());
+                        await new Promise(r => setTimeout(r, delay));
+                        
+                        // Occasional system errors - improved to not overwrite content
+                        if (glitchy && Math.random() < 0.03) {
+                            // Save cursor position
+                            const lineLength = currentLine.length;
+                            
+                            // Write error on a new line below
+                            term.write('\r\n\x1b[31mERROR\x1b[0m');
+                            
+                            // Wait a moment to show the error
+                            await new Promise(r => setTimeout(r, 200));
+                            
+                            // Clear the error line and go back to where we were typing
+                            term.write('\r\x1b[K'); // Clear the current line
+                            term.write('\033[A'); // Move up one line
+                            
+                            // Move cursor to the end of our text
+                            term.write('\r' + '\033[' + lineLength + 'C');
+                            
+                            console.log(`Error shown and recovered at position ${i} in text`);
+                        }
+                    }
+                    
+                    // Only add line break if we completed the text normally
+                    if (i >= text.length) {
+                        term.write('\r\n');
+                    }
+                    console.log(`Finished typing text: "${text}"`);
+                }
+            } finally {
+                // Process any pending text
+                const next = pendingText;
+                typingLock = false;
+                pendingText = null;
+                
+                if (next) {
+                    console.log(`Processing pending text: "${next.text}"`);
+                    await typeText(next.text, next.speed, next.glitchy, next.timeAvailable);
+                }
+            }
+        }
+
+        // Show battery level
+        async function showBattery(level) {
+            console.log(`Displaying battery level: ${level}`);
+            const bars = '█'.repeat(level) + '░'.repeat(10-level);
+            term.write(`\r\nBattery: [${bars}] ${level*10}%\r\n\n`);
+        }
+
+        // Main function to play the song
+        async function playSong() {
+            console.log("Starting playSong function");
+            const audio = document.getElementById('background-audio');
+            console.log(`Audio element found: ${audio ? 'Yes' : 'No'}`);
+            console.log(`Audio source: ${audio.src}`);
+            console.log(`Audio ready state: ${audio.readyState}`);
+            
+            // Reset any typing locks when starting a new session
+            typingLock = false;
+            pendingText = null;
+
+            // Hide start button
+            document.getElementById('start-button').style.display = 'none';
+            // Show restart button
+            document.getElementById('restart-button').style.display = 'block';
+            
+            term.clear();
+            term.write('\x1b[?25l'); // Hide cursor
+            await typeText('SYSTEM STARTING...', 70);
+            await new Promise(r => setTimeout(r, 1000));
+            await showBattery(8);
+            
+            // Start playing audio
+            console.log("Attempting to play audio");
+            audio.currentTime = 0;
+            try {
+                const playPromise = audio.play();
+                if (playPromise !== undefined) {
+                    playPromise.then(_ => {
+                        console.log("Audio playback started successfully");
+                    }).catch(error => {
+                        console.error("Audio playback failed:", error);
+                    });
+                }
+            } catch (e) {
+                console.error("Error playing audio:", e);
+            }
+            
+            let batteryLevel = 8;
+            let currentLyricIndex = 0;
+            
+            console.log("Setting up lyric timers");
+            // Set up timers for each lyric
+            lyrics.forEach((lyric, index) => {
+                console.log(`Setting timer for lyric ${index}: "${lyric.text}" at ${lyric.time}ms`);
+                setTimeout(async () => {
+                    console.log(`Timer fired for lyric index ${index}: "${lyric.text}"`);
+                    // Decrease battery every few lines
+                    if (index % 8 === 0 && index > 0 && batteryLevel > 0) {
+                        batteryLevel--;
+                        await showBattery(batteryLevel);
+                    }
+                    
+                    // Add screen cracks as the song progresses
+                    if (index > 10 && Math.random() < 0.2) {
+                        createCrack();
+                    }
+                    
+                    // More glitchy effects in the second half
+                    const glitchy = index > lyrics.length / 3;
+                    const typingSpeed = 50 + (8 - batteryLevel) * 10;
+                    
+                    // Calculate available time until next lyric
+                    let timeUntilNextLyric = null;
+                    if (index < lyrics.length - 1) {
+                        timeUntilNextLyric = lyrics[index + 1].time - lyric.time;
+                        console.log(`Time until next lyric: ${timeUntilNextLyric}ms`);
+                    }
+                    
+                    // Special effects for shutdown lines
+                    if (lyric.text.includes("system shutting down")) {
+                        term.write('\x1b[31m'); // Red text
+                        await typeText(lyric.text, typingSpeed * 2, true, timeUntilNextLyric);
+                        term.write('\x1b[0m'); // Reset color
+                        
+                        // Add multiple cracks
+                        for (let j = 0; j < 5; j++) {
+                            createCrack();
+                        }
+                    } else if (lyric.text === "shuts down") {
+                        term.write('\r\n\x1b[31m');
+                        await typeText("SYSTEM SHUTTING DOWN...", 200, true, timeUntilNextLyric);
+                        term.write('\x1b[0m');
+                        
+                        // Screen fade out effect
+                        const container = document.getElementById('terminal-container');
+                        let opacity = 1;
+                        const fadeInterval = setInterval(() => {
+                            opacity -= 0.05;
+                            container.style.opacity = opacity;
+                            if (opacity <= 0) clearInterval(fadeInterval);
+                        }, 200);
+                    } else {
+                        await typeText(lyric.text, typingSpeed, glitchy, timeUntilNextLyric);
+                    }
+                    
+                    // Occasional screen glitches
+                    if (glitchy && Math.random() < 0.15 && lyric.text !== "") {
+                        setTimeout(() => {
+                            term.write('\x1b[H\x1b[J'); // Clear screen
+                            setTimeout(() => {
+                                term.write('\x1b[H'); // Return to home
+                                showBattery(batteryLevel);
+                            }, 200);
+                        }, 300);
+                    }
+                }, lyric.time);
+            });
+        }
+
+        // Initialize UI and event listeners
+        document.getElementById('start-button').addEventListener('click', function() {
+            console.log("Start button clicked");
+            playSong();
+        });
+
+        document.getElementById('restart-button').addEventListener('click', function() {
+            console.log("Restart button clicked");
+            const audio = document.getElementById('background-audio');
+            audio.pause();
+            
+            // Reset terminal
+            term.clear();
+            
+            // Clear cracks
+            document.getElementById('overlay').innerHTML = '';
+            
+            // Reset opacity
+            document.getElementById('terminal-container').style.opacity = 1;
+            
+            // Restart
+            playSong();
+        });
+
+        document.getElementById('timing-tool-button').addEventListener('click', function() {
+            console.log("Timing tool button clicked");
+            startTimingTool();
+        });
+
+        // Update the hidden input keyup handler to use debounce
+        function setupDirectEnterKeyListener() {
+            console.log("Setting up direct enter key listener");
+            
+            // Create a hidden input element to help capture keyboard events more reliably
+            const hiddenInput = document.createElement('input');
+            hiddenInput.id = 'hidden-input';
+            hiddenInput.style.position = 'absolute';
+            hiddenInput.style.opacity = '0';
+            hiddenInput.style.height = '0';
+            hiddenInput.style.width = '0';
+            document.body.appendChild(hiddenInput);
+            
+            // Focus it to capture keystrokes
+            hiddenInput.focus();
+            
+            // Add keyup listener (sometimes more reliable than keydown)
+            hiddenInput.addEventListener('keyup', function(e) {
+                console.log(`Hidden input keyup: ${e.key}, keyCode: ${e.keyCode}`);
+                
+                if (timingMode && (e.key === 'Enter' || e.keyCode === 13)) {
+                    console.log("Enter key detected in hidden input");
+                    e.preventDefault();
+                    e.stopPropagation();
+                    debouncedProcessEnterKey(); // Use debounced version
+                    
+                    // Refocus the hidden input
+                    setTimeout(() => hiddenInput.focus(), 10);
+                }
+            });
+            
+            // Also add a direct window listener
+            window.addEventListener('keyup', function(e) {
+                console.log(`Window keyup: ${e.key}, keyCode: ${e.keyCode}`);
+                
+                if (timingMode && (e.key === 'Enter' || e.keyCode === 13)) {
+                    console.log("Enter key detected in window");
+                    e.preventDefault();
+                    e.stopPropagation();
+                    debouncedProcessEnterKey(); // Use debounced version
+                }
+            });
+            
+            return hiddenInput;
+        }
+        
+        // Reset debounce timer when starting timing tool
+        const originalStartTimingTool = startTimingTool;
+        startTimingTool = function() {
+            lastEnterKeyTime = 0;
+            originalStartTimingTool();
+            
+            // Add the direct input listener
+            const hiddenInput = setupDirectEnterKeyListener();
+            
+            // Store the hidden input for cleanup
+            window.hiddenInput = hiddenInput;
+        };
+        
+        // Modify cancelTimingTool to clean up our new listener
+        const originalCancelTimingTool = cancelTimingTool;
+        cancelTimingTool = function() {
+            originalCancelTimingTool();
+            
+            // Clean up hidden input
+            if (window.hiddenInput) {
+                window.hiddenInput.remove();
+                window.hiddenInput = null;
+            }
+        };
+        
+        // Modify finishTimingTool to clean up our new listener
+        const originalFinishTimingTool = finishTimingTool;
+        finishTimingTool = function() {
+            originalFinishTimingTool();
+            
+            // Clean up hidden input
+            if (window.hiddenInput) {
+                window.hiddenInput.remove();
+                window.hiddenInput = null;
+            }
+        };
+
+        // Check URL parameters for UI visibility
+        function shouldShowUI() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('ui') === '1';
+        }
+
+        // Show or hide UI elements based on URL parameters
+        function updateUIVisibility() {
+            const showUI = shouldShowUI();
+            
+            // Timing tool button - only show when UI param is set
+            const timingBtn = document.getElementById('timing-tool-button');
+            if (timingBtn) {
+                timingBtn.style.display = showUI ? 'block' : 'none';
+            }
+            
+            // Start button is always visible for the experience to work
+            // But restart button visibility depends on UI param
+            const restartBtn = document.getElementById('restart-button');
+            if (restartBtn && restartBtn.style.display !== 'none') { // Keep it hidden if it's already hidden
+                restartBtn.style.display = showUI ? 'block' : 'none';
+            }
+        }
+
+        // Override the original playSong function to respect UI visibility
+        const originalPlaySong = playSong;
+        playSong = function() {
+            // Call original function
+            originalPlaySong();
+            
+            // Then update restart button visibility
+            if (!shouldShowUI()) {
+                document.getElementById('restart-button').style.display = 'none';
+            }
+        };
+
+        // Initialize terminal on load
+        window.addEventListener('load', function() {
+            console.log("Window loaded");
+            console.log("Terminal initialized");
+            console.log(`Audio element exists: ${document.getElementById('background-audio') ? 'Yes' : 'No'}`);
+            
+            // Initialize UI visibility based on URL
+            updateUIVisibility();
+            
+            // Handle URL changes (if using history API navigation)
+            window.addEventListener('popstate', updateUIVisibility);
+        });
+    </script>
+</body>
+</html>
