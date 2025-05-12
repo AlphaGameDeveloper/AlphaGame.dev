@@ -1,0 +1,38 @@
+---
+title: send help please
+permalink: /help
+---
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Send Help Please</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xterm@5.1.0/css/xterm.css" />
+        <script src="https://cdn.jsdelivr.net/npm/xterm@5.1.0/lib/xterm.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/xterm-addon-fit@0.7.0/lib/xterm-addon-fit.js"></script>
+        <link rel="stylesheet" href="/assets/help.css">
+
+    </head>
+
+    <body>
+        <div id="terminal-container">
+            <div class="overlay" id="overlay"></div>
+            <button id="start-button" class="start-button">Start Experience</button>
+            <button id="restart-button" class="restart-button">Restart</button>
+            <button id="timing-tool-button" class="timing-tool-button">Timing Tool</button>
+        </div>
+
+        <!-- Add hidden audio element -->
+        <audio id="background-audio" preload="auto">
+            <!-- Replace with your actual audio file path -->
+            <source src="/assets/sendhelpplease.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+
+        <!-- Load the external JavaScript files -->
+        <script type="module" src="/assets/js/sendhelp/main.js"></script>
+    </body>
+
+</html>

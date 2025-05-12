@@ -1,0 +1,81 @@
+/**
+* Copyright (c) 2025 Damien Boisvert (AlphaGameDeveloper)
+* 
+* This software is released under the MIT License.
+* https://opensource.org/licenses/MIT
+*/
+
+* { overflow: hidden; overflow-y: hidden; }
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: monospace;
+    overflow: hidden;
+}
+#terminal-container {
+    overflow: hidden;
+    width: 80%;
+    height: 80%;
+    position: relative;
+}
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+}
+.crack {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.3);
+    transform: rotate(45deg);
+    z-index: 5;
+}
+.start-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px 20px;
+    background-color: rgba(0, 255, 0, 0.2);
+    color: #0f0;
+    border: 1px solid #0f0;
+    cursor: pointer;
+    z-index: 20;
+    font-family: monospace;
+    font-size: 18px;
+}
+.restart-button {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    padding: 5px 10px;
+    background-color: rgba(0, 255, 0, 0.2);
+    color: #0f0;
+    border: 1px solid #0f0;
+    cursor: pointer;
+    z-index: 20;
+    font-family: monospace;
+    font-size: 14px;
+    display: none;
+}
+.timing-tool-button {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    padding: 5px 10px;
+    background-color: rgba(0, 255, 0, 0.2);
+    color: #0f0;
+    border: 1px solid #0f0;
+    cursor: pointer;
+    z-index: 20;
+    font-family: monospace;
+    font-size: 14px;
+}
