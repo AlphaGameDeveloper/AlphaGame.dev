@@ -1,5 +1,6 @@
 // Create a visual crack effect
 function createCrack() {
+    console.log("[createCrack] Creating a crack effect");
     const overlay = document.getElementById('overlay');
     const crack = document.createElement('div');
     crack.className = 'crack';

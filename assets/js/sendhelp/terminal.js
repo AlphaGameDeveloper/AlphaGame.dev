@@ -1,4 +1,5 @@
 import { FitAddon } from 'https://cdn.jsdelivr.net/npm/xterm-addon-fit@0.7.0/+esm';
+import { log } from './consoleHelper.js';
 
 // Initialize terminal and return it
 function initializeTerminal() {
@@ -38,7 +39,7 @@ function calculateAdaptiveSpeed(text, baseSpeed, timeAvailable = null) {
     
     if (effectiveTimeAvailable <= minTimeNeeded) {
         // Not enough time, use minimum speed
-        console.log(`Adaptive speed: Using minimum typing speed for "${text.substring(0, 20)}..."`);
+        log(`Adaptive speed: Using minimum typing speed for "${text.substring(0, 20)}..."`, null, 'debug');
         return 5; // Very fast typing
     }
     
@@ -47,7 +48,7 @@ function calculateAdaptiveSpeed(text, baseSpeed, timeAvailable = null) {
     
     // Cap the speed between reasonable bounds
     const finalSpeed = Math.max(5, Math.min(baseSpeed, adaptiveSpeed));
-    console.log(`Adaptive speed: ${finalSpeed}ms per char for "${text.substring(0, 20)}..." (${text.length} chars in ${timeAvailable}ms)`);
+    log(`Adaptive speed: ${finalSpeed}ms per char for "${text.substring(0, 20)}..." (${text.length} chars in ${timeAvailable}ms)`, null, 'debug');
     
     return finalSpeed;
 }
@@ -61,7 +62,7 @@ async function typeText(term, text, speed = 50, glitchy = false, timeAvailable =
     
     // If there's already typing in progress
     if (typingLock) {
-        console.log("Typing lock active, completing previous text instantly");
+        log("Typing lock active, completing previous text instantly", null, 'debug');
         // Set the pending text to be processed after current typing completes
         pendingText = { text, speed, glitchy, timeAvailable };
         return;
@@ -76,9 +77,9 @@ async function typeText(term, text, speed = 50, glitchy = false, timeAvailable =
         
         // Check if we should type normally or just output instantly
         if (pendingText) {
-            console.log("Outputting instantly due to pending text");
+            log("Outputting instantly due to pending text", null, 'debug');
             term.write(text + '\r\n');
-            console.log(`Instantly typed text: "${text}"`);
+            log(`Instantly typed text: "${text}"`, null, 'debug');
         } else {
             // Track timing to ensure we stay within timeAvailable if specified
             const startTime = Date.now();
@@ -87,14 +88,14 @@ async function typeText(term, text, speed = 50, glitchy = false, timeAvailable =
             for (i = 0; i < text.length; i++) {
                 // Check if we're running out of time
                 if (timeAvailable && Date.now() + (text.length - i) * 5 > endTime) {
-                    console.log("Running out of time, completing instantly");
+                    console.warn(`Running out of time, instantly typing remaining text: "${text.substring(i)}"`);
                     term.write(text.substring(i) + '\r\n');
                     break;
                 }
                 
                 // Check if a new typing task is pending
                 if (pendingText) {
-                    console.log("New text pending, completing current instantly");
+                    console.warn(`New text pending, instantly typing remaining text: "${text.substring(i)}"`);
                     // Output remaining text instantly
                     term.write(text.substring(i) + '\r\n');
                     break;
@@ -115,7 +116,8 @@ async function typeText(term, text, speed = 50, glitchy = false, timeAvailable =
                 }
                 
                 // Variable typing speed
-                const delay = speed * (0.5 + Math.random());
+                const customSpeed = (new URLSearchParams(window.location.search)).get("speed")
+                const delay = customSpeed ? customSpeed : speed * (0.5 + Math.random());
                 await new Promise(r => setTimeout(r, delay));
                 
                 // Occasional system errors - improved to not overwrite content
@@ -139,7 +141,7 @@ async function typeText(term, text, speed = 50, glitchy = false, timeAvailable =
                     term.write('\r');
                     term.write('\x1b[' + lineLength + 'C');
                     
-                    console.log(`Error shown and recovered at position ${i} in text`);
+                    log(`Error shown and recovered at position ${i} in text`, null, 'debug');
                 }
             }
             
@@ -147,7 +149,7 @@ async function typeText(term, text, speed = 50, glitchy = false, timeAvailable =
             if (i >= text.length) {
                 term.write('\r\n');
             }
-            console.log(`Finished typing text: "${text}"`);
+            log(`Finished typing text: "${text}"`, null, 'debug');
         }
     } finally {
         // Process any pending text
@@ -156,7 +158,7 @@ async function typeText(term, text, speed = 50, glitchy = false, timeAvailable =
         pendingText = null;
         
         if (next) {
-            console.log(`Processing pending text: "${next.text}"`);
+            log(`Processing pending text: "${next.text}"`, null, 'debug');
             await typeText(term, next.text, next.speed, next.glitchy, next.timeAvailable, typingLock, pendingText);
         }
     }
@@ -164,7 +166,8 @@ async function typeText(term, text, speed = 50, glitchy = false, timeAvailable =
 
 // Show battery level
 async function showBattery(term, level) {
-    console.log(`Displaying battery level: ${level}`);
+    term.clear();
+    log(`Displaying battery level: ${level}`, null, 'debug');
     const bars = '█'.repeat(level) + '░'.repeat(10-level);
     term.write(`\r\nBattery: [${bars}] ${level*10}%\r\n\n`);
 }

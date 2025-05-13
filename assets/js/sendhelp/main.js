@@ -65,7 +65,7 @@ async function playSong() {
             }
             
             // Add screen cracks as the song progresses
-            if (index > 10 && Math.random() < 0.2) {
+            if (index > 10 && Math.random() < 0.3) {
                 createCrack();
             }
             
