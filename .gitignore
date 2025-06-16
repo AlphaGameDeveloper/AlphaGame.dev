@@ -6,6 +6,8 @@ _site/
 .bundle/
 vendor/
 
+.DS_Store
+
 # ----------------
 # ignore markdown files made by my half-assed code
 scripts/*.md

@@ -1,0 +1,28 @@
+---
+permalink: /wordle/
+title: Wordle Solver
+layout: default
+---
+
+<script src="/assets/js/wordle.js"></script>
+
+<style>
+    #solution {
+        font-weight: bold;
+    }
+</style>
+<h1>Wordle Solver</h1>
+<p>Today's word is: <span id="solution">LOADING!</i></span></p>
+
+<h2>How does it work!?</h2>
+<p>Wordle is a game where you have to guess a 5-letter word in 6 tries. The letters turn green if they are in the correct position, yellow if they are in the word but in the wrong position, and gray if they are not in the word at all.</p>
+<p>This script works by fetching the Wordle solution from the New York Times API.</p>
+
+<h3>Wait a minute... That's cheating!</h3>
+<p>Touché.  I made this for fun lol</p>
+<p>Feel free to use it to cheat, but I recommend trying to solve the puzzle yourself first!</p>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        getWordleSolution();
+    })
+</script>
